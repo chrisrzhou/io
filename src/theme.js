@@ -1,3 +1,4 @@
+// keep in sync with styles/index.css
 export default {
   breakpoints: ['40em', '52em', '64em'],
   fontSizes: {
@@ -8,11 +9,11 @@ export default {
     title: '2rem',
   },
   colors: {
-    gray1: '#f3f3f3',
-    gray2: '#c1c1c1',
-    gray3: '#a9a9a9',
-    gray4: '#333333',
-    gray5: '#111111',
+    background: '#050511',
+    gray1: '#d2d2d4',
+    gray2: '#9f9fa3',
+    gray3: '#4a4a4e',
+    primary: '#595983',
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
@@ -26,9 +27,4 @@ export default {
     heading: 700,
     bold: 700,
   },
-  lineHeights: {
-    body: 1.5,
-    heading: 1.25,
-  },
-  widths: {},
 };

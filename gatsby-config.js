@@ -11,8 +11,8 @@ module.exports = {
         name: 'chrisrzhou.io',
         short_name: 'chrisrzhou',
         start_url: '/',
-        background_color: 'white',
-        theme_color: 'black',
+        background_color: '#050511',
+        theme_color: '#72728b',
         display: 'minimal-ui',
         icon: 'data/images/favicon.ico',
       },
@@ -20,7 +20,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
+        extensions: ['.mdx', '.md'],
         gatsbyRemarkPlugins: [
+          'gatsby-remark-autolink-headers',
           {
             resolve: 'gatsby-remark-prismjs',
             options: {

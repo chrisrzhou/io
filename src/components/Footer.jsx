@@ -1,9 +1,8 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import { Flex } from 'rebass';
 
 import * as routes from 'routes';
-import { FlexList, Icon } from './ui';
+import { Flex, FlexList, Icon } from './ui';
 
 export default function Footer() {
   return (
@@ -13,12 +12,13 @@ export default function Footer() {
       css={`
         bottom: 0;
         position: absolute;
-        width: 100%;
       `}
-      fontSize={['tiny', 'small']}
+      fontFamily="monospace"
+      fontSize="tiny"
       justifyContent="space-between"
       px={3}
-      py={2}
+      py={1}
+      width="100%"
     >
       <FlexList>
         <Icon as="a" href="mailto:chrisrzhou@pm.me" icon="mail" title="email" />

@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css?family=Archivo:400,700|Alegreya:400,700|Roboto+Mono:400,700&display=swap");
+
+:root {
+  --background: #050511;
+  --gray1: #d2d2d4;
+  --gray2: #9f9fa3;
+  --gray3: #4a4a4e;
+  --primary: #595983;
+  --header-z-index: 2;
+  --header-height: 40px;
+  --toc-z-index: 1;
+}
+
+/* Smooth scroll to anchor accounting for header height: https://stackoverflow.com/a/22655654 */
+html {
+  scroll-behavior: smooth;
+}
+:target::before {
+  content: "";
+  display: block;
+  height: var(--header-height);
+  margin-top: calc(-1 * var(--header-height));
+  visibility: hidden;
+}
+
+body {
+  color: var(--gray1);
+  background: var(--background);
+  font-size: 1rem;
+  font-family: Archivo, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 0;
+  position: relative;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--gray2);
+}
+
+blockquote {
+  border-bottom: 1px solid var(--primary);
+  border-top: 1px solid var(--primary);
+  color: var(--gray2);
+  font-family: Alegreya, serif;
+  font-size: 1.1rem;
+  margin: 32px;
+  position: relative;
+}
+blockquote:before {
+  content: "“";
+  position: absolute;
+  top: 0em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6rem;
+  color: var(--primary);
+}
+blockquote > cite {
+  display: block;
+  text-align: right;
+}
+
+code,
+pre {
+  font-family: "Roboto Mono", monospace;
+}

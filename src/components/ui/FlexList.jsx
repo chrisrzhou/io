@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Box, Flex } from 'rebass';
+
+import Box from './Box';
+import Flex from './Flex';
 
 export default function FlexList({
   children,

@@ -5798,6 +5798,17 @@ gatsby-react-router-scroll@^2.1.14:
     scroll-behavior "^0.9.10"
     warning "^3.0.0"
 
+gatsby-remark-autolink-headers@^2.1.16:
+  version "2.1.16"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-autolink-headers/-/gatsby-remark-autolink-headers-2.1.16.tgz#e9142efecb92df781f6b06f98cdb3651766a19b3"
+  integrity sha512-dBBlJSDSDkrMF0JMqDUXzaYpnyvy0kI38qFyMJ3Bul9TsXCsdAAJjMWAG+/Qx4Qvf6dv0d9Gz1d/d0Qyb3ZEqQ==
+  dependencies:
+    "@babel/runtime" "^7.6.3"
+    github-slugger "^1.2.1"
+    lodash "^4.17.15"
+    mdast-util-to-string "^1.0.6"
+    unist-util-visit "^1.4.1"
+
 gatsby-remark-prismjs@^3.3.20:
   version "3.3.20"
   resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.3.20.tgz#b16cde6ebbc8ecc839c054ab2e8debfe8024fae7"
