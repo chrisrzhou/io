@@ -6,8 +6,13 @@ import * as routes from 'routes';
 import { Container } from 'ui';
 
 function getNavcrumbs() {
+  // gatsby/webpack does not have access to location object
+  if (typeof location === 'undefined') {
+    return [];
+  }
+
   let route = '';
-  return window.location.pathname
+  return location.pathname
     .split('/')
     .filter(path => path)
     .reduce((paths, path) => {
