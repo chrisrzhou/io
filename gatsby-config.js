@@ -14,7 +14,7 @@ module.exports = {
         background_color: '#050511',
         theme_color: '#72728b',
         display: 'minimal-ui',
-        icon: 'data/images/favicon.ico',
+        icon: 'favicon.ico',
       },
     },
     {
@@ -38,22 +38,22 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'drawings',
-        path: 'data/drawings',
+        name: 'art',
+        path: 'data/art',
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'readings',
-        path: 'data/readings',
+        name: 'books',
+        path: 'data/books',
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'writings',
-        path: 'data/writings',
+        name: 'blog',
+        path: 'data/blog',
       },
     },
     'gatsby-transformer-sharp',

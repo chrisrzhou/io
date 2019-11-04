@@ -2,17 +2,13 @@ import { Link } from 'gatsby';
 import React from 'react';
 
 import * as routes from 'routes';
-import { Flex, FlexList, Icon } from './ui';
+import { Flex, FlexList, Icon } from 'ui';
 
 export default function Footer() {
   return (
     <Flex
       alignItems="baseline"
       as="footer"
-      css={`
-        bottom: 0;
-        position: absolute;
-      `}
       fontFamily="monospace"
       fontSize="tiny"
       justifyContent="space-between"

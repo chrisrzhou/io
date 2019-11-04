@@ -3,17 +3,20 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { FlexList, Tag } from './ui';
 import Layout from './Layout';
-import TableOfContents from './tableOfContents';
+import TableOfContents from 'components/tableOfContents';
+import { FlexList, Tag } from 'ui';
 
-export default function MDXLayout({ data: { mdx } }) {
-  const { body, excerpt, frontmatter, timeToRead, tableOfContents } = mdx;
+export default function MdxLayout({ data: { mdx } }) {
+  const { body, excerpt, frontmatter, tableOfContents, timeToRead } = mdx;
   const { date, tags, title } = frontmatter;
 
   return (
-    <Layout description={excerpt} title={title}>
-      <TableOfContents contents={tableOfContents} />
+    <Layout
+      description={excerpt}
+      headerExtraContent={<TableOfContents contents={tableOfContents} />}
+      title={title}
+    >
       <FlexList color="gray3" flexWrap="wrap" fontSize="small" pb={3}>
         <div>{date}</div>
         <div>{timeToRead}min</div>
@@ -24,7 +27,7 @@ export default function MDXLayout({ data: { mdx } }) {
   );
 }
 
-MDXLayout.propTypes = {
+MdxLayout.propTypes = {
   data: PropTypes.shape({
     mdx: PropTypes.object.isRequired,
   }).isRequired,

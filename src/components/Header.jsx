@@ -1,8 +1,9 @@
 import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Box, Container } from './ui';
 import * as routes from 'routes';
+import { Container } from 'ui';
 
 function getNavcrumbs() {
   let route = '';
@@ -26,41 +27,44 @@ function getNavcrumbs() {
     ));
 }
 
-export default function Header() {
+export default function Header({ extraContent }) {
   const navcrumbs = getNavcrumbs();
   return (
     <Container
+      alignItems="center"
       as="header"
-      backgroundColor="background"
       css={`
         align-items: center;
+        background: linear-gradient(
+          to bottom,
+          var(--background) 80%,
+          rgba(0, 0, 0, 0) 100%
+        );
         display: flex;
+        flex-shrink: 0;
+        justify-content: space-between;
         height: var(--header-height);
         overflow: hidden;
         position: sticky;
         top: 0;
         z-index: var(--header-z-index);
       `}
-      color="primary"
       fontFamily="monospace"
-      fontSize="tiny"
+      fontSize="small"
     >
-      <Box
-        css={`
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        `}
-      >
-        {navcrumbs.length > 0 ? (
-          <>
-            <Link to={routes.HOME}>~</Link>
-            {navcrumbs}
-          </>
-        ) : (
-          <Link to={routes.HOME}>~/chrisrzhou.io</Link>
-        )}
-      </Box>
+      {navcrumbs.length > 0 ? (
+        <div className="truncate">
+          <Link to={routes.HOME}>~</Link>
+          {navcrumbs}
+        </div>
+      ) : (
+        '~/chrisrzhou'
+      )}
+      {extraContent}
     </Container>
   );
 }
+
+Header.propTypes = {
+  extraContent: PropTypes.node,
+};

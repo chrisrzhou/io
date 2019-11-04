@@ -1,8 +1,11 @@
-import Layout from "components/Layout";
+import Layout from "layouts/Layout";
 
-export default function({ children }) {
+export default function ResumePage({ children }) {
   return (
-    <Layout description="Resume" title="Resume">
+    <Layout
+      description="Professional experience, skills and achievements."
+      title="Resume"
+    >
       {children}
     </Layout>
   );

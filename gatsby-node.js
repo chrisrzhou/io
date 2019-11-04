@@ -44,7 +44,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   posts.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve(`src/components/MDXLayout.jsx`),
+      component: path.resolve(`src/layouts/MdxLayout.jsx`),
       context: { id: node.id },
     });
   });
