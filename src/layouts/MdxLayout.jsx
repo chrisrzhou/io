@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Layout from './Layout';
-import TableOfContents from 'components/tableOfContents';
+import TableOfContents from 'components/TableOfContents';
 import { FlexList, Tag } from 'ui';
 
 export default function MdxLayout({ data: { mdx } }) {
