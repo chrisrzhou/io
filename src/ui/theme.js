@@ -5,8 +5,8 @@ export default {
     tiny: '0.75rem',
     small: '0.85rem',
     base: '1rem',
-    large: '1.5rem',
-    title: '2rem',
+    large: '1.3rem',
+    title: '1.5rem',
   },
   colors: {
     background: '#050511',

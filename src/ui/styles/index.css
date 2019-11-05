@@ -8,7 +8,7 @@
   --gray3: #4a4a4e;
   --primary: #595983;
   --header-z-index: 1;
-  --header-height: 36px;
+  --header-height: 40px;
   --modal-z-index: 2;
 }
 
@@ -48,6 +48,7 @@ blockquote {
   font-size: 1.1rem;
   margin: 32px;
   position: relative;
+  text-align: center;
 }
 blockquote:before {
   color: var(--primary);

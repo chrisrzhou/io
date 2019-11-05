@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
 
 import { FlexList, Icon, Modal } from 'ui';
+import { useToggle } from 'hooks';
 
 function renderContents(contents, onClick, depth = 0) {
   return (contents.items || []).map(item => (
@@ -18,18 +19,10 @@ function renderContents(contents, onClick, depth = 0) {
 }
 
 export default function TableOfContents({ contents }) {
-  const [shown, setShown] = useState(false);
+  const [shown, show, hide] = useToggle(false);
 
   if (!contents.items) {
     return null;
-  }
-
-  function show() {
-    setShown(true);
-  }
-
-  function hide() {
-    setShown(false);
   }
 
   return (

@@ -1,18 +1,14 @@
+import { globalHistory } from '@reach/router';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { Box, Header as UIHeader } from 'ui';
 import * as routes from 'routes';
-import { Container } from 'ui';
 
 function getNavcrumbs() {
-  // gatsby/webpack does not have access to location object
-  if (typeof location === 'undefined') {
-    return [];
-  }
-
   let route = '';
-  return location.pathname
+  return globalHistory.location.pathname
     .split('/')
     .filter(path => path)
     .reduce((paths, path) => {
@@ -34,40 +30,19 @@ function getNavcrumbs() {
 
 export default function Header({ extraContent }) {
   const navcrumbs = getNavcrumbs();
-  return (
-    <Container
-      alignItems="center"
-      as="header"
-      css={`
-        align-items: center;
-        background: linear-gradient(
-          to bottom,
-          var(--background) 80%,
-          rgba(0, 0, 0, 0) 100%
-        );
-        display: flex;
-        flex-shrink: 0;
-        justify-content: space-between;
-        height: var(--header-height);
-        overflow: hidden;
-        position: sticky;
-        top: 0;
-        z-index: var(--header-z-index);
-      `}
-      fontFamily="monospace"
-      fontSize="small"
-    >
+  const mainContent = (
+    <Box className="truncate" fontFamily="monospace" fontSize="tiny">
       {navcrumbs.length > 0 ? (
-        <div className="truncate">
+        <>
           <Link to={routes.HOME}>~</Link>
           {navcrumbs}
-        </div>
+        </>
       ) : (
         '~/chrisrzhou'
       )}
-      {extraContent}
-    </Container>
+    </Box>
   );
+  return <UIHeader mainContent={mainContent} extraContent={extraContent} />;
 }
 
 Header.propTypes = {

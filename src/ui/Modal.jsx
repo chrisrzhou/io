@@ -2,8 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Box from './Box';
+import Container from './Container';
 import Flex from './Flex';
 import FlexList from './FlexList';
+import Header from './Header';
 import Icon from './Icon';
 
 export default function Modal({ children, onDismiss, shown, title }) {
@@ -23,26 +25,20 @@ export default function Modal({ children, onDismiss, shown, title }) {
         z-index: var(--modal-z-index);
       `}
       flexDirection="column"
-      p={3}
     >
-      <Flex color="gray1" fontSize="large" justifyContent="space-between">
-        <div>{title}</div>
-        <Icon
-          as="a"
-          icon="close"
-          onClick={onDismiss}
-          size="large"
-          title="close"
-        />
-      </Flex>
-      <Box
-        css={`
-          height: 100%;
-          overflow: auto;
-        `}
-      >
-        {children}
-      </Box>
+      <Header
+        extraContent={
+          <Icon
+            as="a"
+            icon="close"
+            onClick={onDismiss}
+            size="large"
+            title="close"
+          />
+        }
+        mainContent={title}
+      />
+      <Container>{children}</Container>
     </FlexList>
   );
 }

@@ -12,6 +12,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         trailingSlash: false,
       });
       createNodeField({
+        name: 'sourceInstanceName',
+        node,
+        value: sourceInstanceName,
+      });
+      createNodeField({
         name: 'slug',
         node,
         value: `/${sourceInstanceName}${filePath}`,
@@ -31,6 +36,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             fields {
               slug
+              sourceInstanceName
             }
           }
         }
@@ -42,10 +48,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
   const posts = result.data.allMdx.edges;
   posts.forEach(({ node }) => {
+    const { fields, id } = node;
+    const { slug, sourceInstanceName } = fields;
     createPage({
-      path: node.fields.slug,
+      path: slug,
       component: path.resolve(`src/layouts/MdxLayout.jsx`),
-      context: { id: node.id },
+      context: {
+        id,
+        sourceInstanceName,
+      },
     });
   });
 };

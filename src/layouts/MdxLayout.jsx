@@ -5,10 +5,10 @@ import React from 'react';
 
 import Layout from './Layout';
 import TableOfContents from 'components/TableOfContents';
-import { FlexList, Tag } from 'ui';
+import { FlexList, InfoText, Tag } from 'ui';
 
-export default function MdxLayout({ data: { mdx } }) {
-  const { body, excerpt, frontmatter, tableOfContents, timeToRead } = mdx;
+export default function MdxLayout({ data, pageContext }) {
+  const { body, excerpt, frontmatter, tableOfContents, timeToRead } = data.mdx;
   const { date, tags, title } = frontmatter;
 
   return (
@@ -17,10 +17,17 @@ export default function MdxLayout({ data: { mdx } }) {
       headerExtraContent={<TableOfContents contents={tableOfContents} />}
       title={title}
     >
-      <FlexList color="gray3" flexWrap="wrap" fontSize="small" pb={3}>
-        <div>{date}</div>
-        <div>{timeToRead}min</div>
-        {tags && tags.map(tag => <Tag key={tag} to={tag} value={tag} />)}
+      <FlexList flexWrap="wrap" fontSize="small" pb={3}>
+        <InfoText>{date}</InfoText>
+        <InfoText>{timeToRead}min</InfoText>
+        {tags &&
+          tags.map(tag => (
+            <Tag
+              key={tag}
+              pathname={`/${pageContext.sourceInstanceName}`}
+              value={tag}
+            />
+          ))}
       </FlexList>
       <MDXRenderer>{body}</MDXRenderer>
     </Layout>
@@ -31,6 +38,7 @@ MdxLayout.propTypes = {
   data: PropTypes.shape({
     mdx: PropTypes.object.isRequired,
   }).isRequired,
+  pageContext: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
