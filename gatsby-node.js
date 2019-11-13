@@ -1,35 +1,58 @@
+const fastExif = require('fast-exif');
 const { createFilePath } = require('gatsby-source-filesystem');
 const path = require('path');
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+function createCommonNodeFields({ actions, node, getNode }) {
+  const { createNodeField } = actions;
+  const { sourceInstanceName } = getNode(node.parent);
+  const filePath = createFilePath({
+    node,
+    getNode,
+    trailingSlash: false,
+  });
+
+  createNodeField({
+    name: 'sourceInstanceName',
+    node,
+    value: sourceInstanceName,
+  });
+  createNodeField({
+    name: 'slug',
+    node,
+    value: `/${sourceInstanceName}${filePath}`,
+  });
+}
+
+exports.onCreateNode = ({ actions, node, getNode }) => {
   const { createNodeField } = actions;
   switch (node.internal.type) {
     case 'Mdx': {
-      const { sourceInstanceName } = getNode(node.parent);
-      const filePath = createFilePath({
-        node,
-        getNode,
-        trailingSlash: false,
-      });
-      createNodeField({
-        name: 'sourceInstanceName',
-        node,
-        value: sourceInstanceName,
-      });
-      createNodeField({
-        name: 'slug',
-        node,
-        value: `/${sourceInstanceName}${filePath}`,
+      createCommonNodeFields({ actions, node, getNode });
+      break;
+    }
+    case 'ImageSharp': {
+      createCommonNodeFields({ actions, node, getNode });
+      const { absolutePath } = getNode(node.parent);
+
+      fastExif.read(absolutePath).then(exifData => {
+        if (exifData && exifData.image) {
+          const date = exifData.image.ModifyDate;
+          createNodeField({
+            node,
+            name: `exif`,
+            value: { date },
+          });
+        }
       });
       break;
     }
   }
 };
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
-  const result = await graphql(`
-    query {
+  const allPosts = await graphql(`
+    query allPosts {
       allMdx {
         edges {
           node {
@@ -43,16 +66,42 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     }
   `);
-  if (result.errors) {
-    reporter.panicOnBuild('ERROR: Loading "createPages" query');
-  }
-  const posts = result.data.allMdx.edges;
-  posts.forEach(({ node }) => {
+  allPosts.data.allMdx.edges.forEach(({ node }) => {
     const { fields, id } = node;
     const { slug, sourceInstanceName } = fields;
     createPage({
       path: slug,
-      component: path.resolve(`src/layouts/MdxLayout.jsx`),
+      component: path.resolve(`src/layouts/PostLayout.jsx`),
+      context: {
+        id,
+        sourceInstanceName,
+      },
+    });
+  });
+
+  const allDrawings = await graphql(`
+    query allDrawings {
+      allImageSharp(
+        filter: { fields: { sourceInstanceName: { eq: "drawings" } } }
+      ) {
+        edges {
+          node {
+            id
+            fields {
+              sourceInstanceName
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+  allDrawings.data.allImageSharp.edges.forEach(({ node }) => {
+    const { fields, id } = node;
+    const { slug, sourceInstanceName } = fields;
+    createPage({
+      path: slug,
+      component: path.resolve(`src/layouts/DrawingLayout.jsx`),
       context: {
         id,
         sourceInstanceName,

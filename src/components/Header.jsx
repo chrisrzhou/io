@@ -31,7 +31,7 @@ function getNavcrumbs() {
 export default function Header({ extraContent }) {
   const navcrumbs = getNavcrumbs();
   const mainContent = (
-    <Box className="truncate" fontFamily="monospace" fontSize="tiny">
+    <Box className="truncate" fontFamily="monospace" fontSize="small">
       {navcrumbs.length > 0 ? (
         <>
           <Link to={routes.HOME}>~</Link>

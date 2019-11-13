@@ -2,26 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import AllMdxLayout from 'layouts/AllMdxLayout';
+import PostListLayout from 'layouts/PostListLayout';
 
-export default function BlogPage({ data }) {
+export default function PostsPage({ data }) {
   return (
-    <AllMdxLayout
+    <PostListLayout
       data={data}
       description="Writings about technology, philosophy and other random things."
-      title="Blog"
+      title="Posts"
     />
   );
 }
 
-BlogPage.propTypes = {
+PostsPage.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
-  query AllMdxBlog {
+  query allPosts {
     allMdx(
-      filter: { fileAbsolutePath: { regex: "//blog/" } }
+      filter: { fields: { sourceInstanceName: { eq: "posts" } } }
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {
       edges {

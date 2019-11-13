@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import AllMdxLayout from 'layouts/AllMdxLayout';
+import PostListLayout from 'layouts/PostListLayout';
 
 export default function BooksPage({ data }) {
   return (
-    <AllMdxLayout
+    <PostListLayout
       data={data}
       description="Book reviews and ratings."
       title="Books"
@@ -19,9 +19,9 @@ BooksPage.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query AllMdxReadings {
+  query allBooks {
     allMdx(
-      filter: { fileAbsolutePath: { regex: "//books/" } }
+      filter: { fields: { sourceInstanceName: { eq: "books" } } }
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {
       edges {

@@ -10,7 +10,7 @@ export default function Footer() {
       alignItems="baseline"
       as="footer"
       fontFamily="monospace"
-      fontSize="tiny"
+      fontSize="small"
       justifyContent="space-between"
       px={3}
       py={1}

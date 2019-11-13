@@ -5,12 +5,13 @@ import Helmet from 'react-helmet';
 
 import Footer from 'components/Footer';
 import Header from 'components/Header';
-import { Box, Container, Flex, theme } from 'ui';
+import { Box, Container, InfoText, Flex, theme } from 'ui';
 
 export default function Layout({
   children,
   description,
   headerExtraContent,
+  subtitle,
   title,
 }) {
   // force-scroll to hash if it exists
@@ -35,9 +36,7 @@ export default function Layout({
       />
       <Flex
         css={`
-          height: 100vh;
-          overflow: auto;
-          scroll-behavior: smooth;
+          min-height: 100vh;
         `}
         flexDirection="column"
       >
@@ -46,15 +45,18 @@ export default function Layout({
           as="main"
           css={`
             flex-grow: 1;
+            margin-top: var(--header-height);
           `}
-          pb={6}
         >
           {title && (
             <Box as="h1" p={0}>
               {title}
             </Box>
           )}
-          {children}
+          {subtitle && <InfoText>{subtitle}</InfoText>}
+          <Box pb={6} pt={3}>
+            {children}
+          </Box>
         </Container>
         <Footer />
       </Flex>
@@ -66,5 +68,6 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
   description: PropTypes.string.isRequired,
   headerExtraContent: PropTypes.node,
+  subtitle: PropTypes.string,
   title: PropTypes.string,
 };

@@ -29,7 +29,7 @@ function getTags(data, pathname) {
   }));
 }
 
-export default function AllMdxLayout({ data, description, title }) {
+export default function PostListLayout({ data, description, title }) {
   const { edges } = data.allMdx;
 
   const { pathname, search } = globalHistory.location;
@@ -53,10 +53,9 @@ export default function AllMdxLayout({ data, description, title }) {
       return !appliedTagValue || entry.tags.includes(appliedTagValue);
     });
 
-  const entriesCount = entries.length;
-  const infoText = (
-    <InfoText>
-      {entriesCount} {pluralize('entry', entriesCount)} found
+  const subtitle = (
+    <>
+      {pluralize('entry', entries.length)} found
       {appliedTagValue && (
         <>
           {' '}
@@ -64,17 +63,17 @@ export default function AllMdxLayout({ data, description, title }) {
           <a onClick={() => navigate(pathname)}>remove tag</a>)
         </>
       )}
-    </InfoText>
+    </>
   );
 
   return (
     <Layout
       description={description}
       headerExtraContent={<Tags tags={getTags(data, pathname)} />}
+      subtitle={subtitle}
       title={title}
     >
-      {infoText}
-      <FlexList flexDirection="column" spacing={5} pt={4}>
+      <FlexList flexDirection="column" spacing={5}>
         {entries.map(entry => {
           const { date, excerpt, fields, id, timeToRead, tags, title } = entry;
           return (
@@ -82,13 +81,15 @@ export default function AllMdxLayout({ data, description, title }) {
               <Link to={fields.slug}>
                 <Box as="h2">{title}</Box>
               </Link>
-              <FlexList flexWrap="wrap" fontSize="small" pb={3}>
-                <InfoText>{date}</InfoText>
-                <InfoText>{timeToRead}min</InfoText>
-                {tags.map(tag => (
-                  <Tag key={tag} pathname={pathname} value={tag} />
-                ))}
-              </FlexList>
+              <InfoText>
+                <FlexList flexWrap="wrap" fontSize="small" pb={3}>
+                  <div>{date}</div>
+                  <div>{timeToRead}min</div>
+                  {tags.map(tag => (
+                    <Tag key={tag} pathname={pathname} value={tag} />
+                  ))}
+                </FlexList>
+              </InfoText>
               <QuoteText>{excerpt}</QuoteText>
             </FlexList>
           );
@@ -98,7 +99,7 @@ export default function AllMdxLayout({ data, description, title }) {
   );
 }
 
-AllMdxLayout.propTypes = {
+PostListLayout.propTypes = {
   data: PropTypes.shape({
     allMdx: PropTypes.shape({
       edges: PropTypes.arrayOf(

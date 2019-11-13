@@ -1,7 +1,7 @@
 export const HOME = '/';
 export const ABOUT = '/about';
-export const ART = '/art';
-export const BLOG = '/blog';
 export const BOOKS = '/books';
+export const DRAWINGS = '/drawings';
+export const HACKS = '/hacks';
+export const POSTS = '/posts';
 export const RESUME = '/resume';
-export const WORK = '/work';

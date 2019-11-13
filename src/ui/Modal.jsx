@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Box from './Box';
 import Container from './Container';
-import Flex from './Flex';
 import FlexList from './FlexList';
 import Header from './Header';
 import Icon from './Icon';
@@ -19,6 +17,7 @@ export default function Modal({ children, onDismiss, shown, title }) {
         background: var(--background);
         bottom: 0;
         left: 0;
+        margin-top: var(--header-height);
         position: fixed;
         right: 0;
         top: 0;

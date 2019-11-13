@@ -34,15 +34,8 @@ module.exports = {
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-resolve-src',
-    'gatsby-plugin-sharp',
     'gatsby-plugin-remove-trailing-slashes',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'art',
-        path: 'data/art',
-      },
-    },
+    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -53,8 +46,15 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'blog',
-        path: 'data/blog',
+        name: 'drawings',
+        path: 'data/drawings',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'posts',
+        path: 'data/posts',
       },
     },
     'gatsby-transformer-sharp',
