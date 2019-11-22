@@ -18,7 +18,7 @@ export default function FlexList({
       css={`
         ${css};
         > :not(:last-child) {
-          margin-${direction}: ${marginValue}px !important;
+          margin-${direction}: ${marginValue} !important;
         }
       `}
       flexDirection={flexDirection}

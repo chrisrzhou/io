@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Container from './Container';
-import FlexList from './FlexList';
-import Header from './Header';
 import Icon from './Icon';
+import Layout from './Layout';
 
 export default function Modal({ children, onDismiss, shown, title }) {
   if (!shown) {
@@ -12,33 +10,15 @@ export default function Modal({ children, onDismiss, shown, title }) {
   }
 
   return (
-    <FlexList
-      css={`
-        background: var(--background);
-        bottom: 0;
-        left: 0;
-        margin-top: var(--header-height);
-        position: fixed;
-        right: 0;
-        top: 0;
-        z-index: var(--modal-z-index);
-      `}
-      flexDirection="column"
+    <Layout
+      action={
+        <Icon as="a" icon="close" onClick={onDismiss} size="l" title="close" />
+      }
+      header={<div />}
+      title={title}
     >
-      <Header
-        extraContent={
-          <Icon
-            as="a"
-            icon="close"
-            onClick={onDismiss}
-            size="large"
-            title="close"
-          />
-        }
-        mainContent={title}
-      />
-      <Container>{children}</Container>
-    </FlexList>
+      {children}
+    </Layout>
   );
 }
 

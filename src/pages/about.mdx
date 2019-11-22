@@ -1,12 +1,35 @@
-import README from "../../README.md";
-import Layout from "layouts/Layout";
+import PageLayout from "layouts/PageLayout";
 
 export default function AboutPage({ children }) {
-  return (
-    <Layout description="About me" title="About">
-      {children}
-    </Layout>
-  );
+  return <PageLayout title="About">{children}</PageLayout>;
 }
 
-<README />
+## TODOS
+
+- [x] Reimplement `Modal`
+- [ ] Implement `Calendar` to filter for posts in a given year/month (e.g. '2019-08')
+- [x] Implement `ArtPage` and `HacksPage`
+  - [x] Use `DrawingLayout`
+  - [ ] Use `HackLayout` for individual detail page.
+  - [x] Use `GalleryLayout` for list view.
+  - Render hacks/projects in iframe.
+- [ ] Update `ResumePage`
+- [ ] Update README (i.e. `AboutPage`)
+- [ ] `ScrollTop` icon button
+- [ ] Update index page
+
+```jsx{0,3}
+const testPrismCode = ({ prop1, prop2 }) => {
+  return (
+    <div>
+      {prop1.map(p => {
+        return (
+          <div key={p}>
+            {prop2} {p}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+```

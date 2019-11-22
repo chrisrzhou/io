@@ -1,9 +1,9 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
-import Layout from 'layouts/Layout';
-import { FlexList } from 'ui';
+import PageLayout from 'layouts/PageLayout';
 import * as routes from 'routes';
+import { FlexList } from 'ui';
 
 const links = [
   { label: 'Posts', to: routes.POSTS },
@@ -14,21 +14,14 @@ const links = [
 
 export default function IndexPage() {
   return (
-    <Layout description="A digital imprint of myself on the web.">
-      <FlexList
-        alignItems="center"
-        css={`
-          height: 100%;
-        `}
-        justifyContent="center"
-        flexDirection="column"
-      >
+    <PageLayout title="">
+      <FlexList alignItems="center" flexDirection="column">
         {links.map(({ label, to }) => (
           <Link key={to} to={to}>
             <h2>{label}</h2>
           </Link>
         ))}
       </FlexList>
-    </Layout>
+    </PageLayout>
   );
 }

@@ -10,7 +10,6 @@ function createCommonNodeFields({ actions, node, getNode }) {
     getNode,
     trailingSlash: false,
   });
-
   createNodeField({
     name: 'sourceInstanceName',
     node,
@@ -33,7 +32,6 @@ exports.onCreateNode = ({ actions, node, getNode }) => {
     case 'ImageSharp': {
       createCommonNodeFields({ actions, node, getNode });
       const { absolutePath } = getNode(node.parent);
-
       fastExif.read(absolutePath).then(exifData => {
         if (exifData && exifData.image) {
           const date = exifData.image.ModifyDate;

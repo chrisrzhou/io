@@ -12,7 +12,7 @@ module.exports = {
         short_name: 'chrisrzhou',
         start_url: '/',
         background_color: '#050511',
-        theme_color: '#72728b',
+        theme_color: '#595983',
         display: 'minimal-ui',
         icon: 'favicon.ico',
       },

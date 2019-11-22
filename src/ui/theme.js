@@ -2,11 +2,11 @@
 export default {
   breakpoints: ['40em', '52em', '64em'],
   fontSizes: {
-    tiny: '0.75rem',
-    small: '0.85rem',
-    base: '1rem',
-    large: '1.3rem',
-    title: '1.5rem',
+    xs: '0.75rem',
+    s: '0.85rem',
+    m: '1rem',
+    l: '1.25rem',
+    xl: '1.5rem',
   },
   colors: {
     background: '#050511',
@@ -15,16 +15,15 @@ export default {
     gray3: '#4a4a4e',
     primary: '#595983',
   },
-  space: [0, 4, 8, 16, 32, 64, 128, 256],
+  space: ['0.0rem', '0.25rem', '0.5rem', '1rem', '2rem', '3rem'],
   fonts: {
     body: 'Archivo, sans-serif',
-    serif: 'Alegreya, serif',
     heading: 'inherit',
     monospace: 'Roboto Mono, monospace',
+    serif: 'Alegreya, serif',
   },
   fontWeights: {
     body: 400,
-    heading: 700,
     bold: 700,
   },
 };

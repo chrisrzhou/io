@@ -9,7 +9,7 @@ export default function Tag({ count, onClick, pathname, value, ...rest }) {
   return (
     <Box
       as="a"
-      fontSize="small"
+      fontSize="s"
       onClick={() => {
         navigate(`${pathname}?${TAG_SEARCH_PARAM}=${value}`);
         onClick && onClick();

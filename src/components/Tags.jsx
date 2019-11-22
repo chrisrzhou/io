@@ -2,40 +2,29 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { FlexList, Icon, InfoText, Modal, Tag } from 'ui';
-import { useToggle } from 'hooks';
+import { FlexList, Tag } from 'ui';
 
-export default function Tags({ tags }) {
-  const [shown, show, hide] = useToggle(false);
-
-  if (tags.length === 0) {
-    return null;
-  }
-
+export default function Tags({ onSelectTag, tags }) {
   return (
-    <>
-      <Icon as="a" icon="hash" onClick={show} title="Tags" size="large" />
-      <Modal onDismiss={hide} shown={shown} title="Tags">
-        <FlexList flexDirection="column" spacing={1}>
-          {tags.length === 0 && <InfoText>No tags found.</InfoText>}
-          {_.orderBy(tags, ['count', 'value'], ['desc', 'asc']).map(
-            ({ count, pathname, value }) => (
-              <Tag
-                count={count}
-                key={value}
-                pathname={pathname}
-                value={value}
-                onClick={hide}
-              />
-            ),
-          )}
-        </FlexList>
-      </Modal>
-    </>
+    <FlexList color="gray3" flexDirection="column" fontSize="s" spacing={1}>
+      {tags.length === 0 && <div>No tags found.</div>}
+      {_.orderBy(tags, ['count', 'value'], ['desc', 'asc']).map(
+        ({ count, pathname, value }) => (
+          <Tag
+            count={count}
+            key={value}
+            pathname={pathname}
+            value={value}
+            onClick={onSelectTag}
+          />
+        ),
+      )}
+    </FlexList>
   );
 }
 
 Tags.propTypes = {
+  onSelectTag: PropTypes.func.isRequired,
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       count: PropTypes.number.isRequired,

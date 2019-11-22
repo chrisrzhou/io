@@ -2,44 +2,28 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Flex from './Flex';
-import Container from './Container';
 
-export default function Header({ extraContent, mainContent }) {
+export default function Header({ action, children }) {
   return (
-    <Container
-      as="header"
+    <Flex
+      alignItems="center"
       css={`
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        background: linear-gradient(
-          to bottom,
-          var(--background) 80%,
-          rgba(0, 0, 0, 0) 100%
-        );
+        height: var(--height-header);
         left: 0;
-        height: var(--header-height);
         position: fixed;
         right: 0;
         top: 0;
-        z-index: var(--header-z-index);
       `}
+      justifyContent="space-between"
+      px={3}
     >
-      <Flex
-        alignItems="center"
-        css={`
-          width: 100%;
-        `}
-        justifyContent="space-between"
-      >
-        {mainContent}
-        {extraContent}
-      </Flex>
-    </Container>
+      {children}
+      {action}
+    </Flex>
   );
 }
 
 Header.propTypes = {
-  extraContent: PropTypes.node,
-  mainContent: PropTypes.node.isRequired,
+  action: PropTypes.node,
+  children: PropTypes.node.isRequired,
 };

@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
 import Tags from 'components/Tags';
-import Layout from './Layout';
+import PageLayout from './PageLayout';
 import { TAG_SEARCH_PARAM } from 'enums';
-import { Box, FlexList, InfoText, QuoteText, Tag } from 'ui';
+import { useToggle } from 'hooks';
+import { Box, FlexList, Icon, Modal, Tag } from 'ui';
 import { pluralize } from 'utils';
 
 function getTags(data, pathname) {
@@ -29,9 +30,10 @@ function getTags(data, pathname) {
   }));
 }
 
-export default function PostListLayout({ data, description, title }) {
-  const { edges } = data.allMdx;
+export default function PostListLayout({ data, title }) {
+  const [shown, show, hide] = useToggle(false);
 
+  const { edges } = data.allMdx;
   const { pathname, search } = globalHistory.location;
   const appliedTagValue = new URLSearchParams(search).get(TAG_SEARCH_PARAM);
 
@@ -60,42 +62,44 @@ export default function PostListLayout({ data, description, title }) {
         <>
           {' '}
           for <Tag pathname={pathname} value={appliedTagValue} /> (
-          <a onClick={() => navigate(pathname)}>remove tag</a>)
+          <a onClick={() => navigate(pathname)}>clear</a>)
         </>
       )}
     </>
   );
 
   return (
-    <Layout
-      description={description}
-      headerExtraContent={<Tags tags={getTags(data, pathname)} />}
+    <PageLayout
+      action={<Icon as="a" icon="hash" onClick={show} size="l" title="Tags" />}
       subtitle={subtitle}
       title={title}
     >
       <FlexList flexDirection="column" spacing={5}>
         {entries.map(entry => {
-          const { date, excerpt, fields, id, timeToRead, tags, title } = entry;
+          const { date, excerpt, fields, id, tags, timeToRead, title } = entry;
           return (
-            <FlexList key={id} flexDirection="column" spacing={1}>
+            <FlexList key={id} flexDirection="column" spacing={0}>
               <Link to={fields.slug}>
                 <Box as="h2">{title}</Box>
               </Link>
-              <InfoText>
-                <FlexList flexWrap="wrap" fontSize="small" pb={3}>
-                  <div>{date}</div>
-                  <div>{timeToRead}min</div>
-                  {tags.map(tag => (
-                    <Tag key={tag} pathname={pathname} value={tag} />
-                  ))}
-                </FlexList>
-              </InfoText>
-              <QuoteText>{excerpt}</QuoteText>
+              <FlexList color="gray3" flexWrap="wrap" fontSize="s" pb={2}>
+                <div>{date}</div>
+                <div>{`${timeToRead}min`}</div>
+                {tags.map(tag => (
+                  <Tag key={tag} pathname={pathname} value={tag} />
+                ))}
+              </FlexList>
+              <Box color="gray2" fontFamily="serif">
+                {excerpt}
+              </Box>
             </FlexList>
           );
         })}
       </FlexList>
-    </Layout>
+      <Modal onDismiss={hide} shown={shown} title="Tags">
+        <Tags onSelectTag={hide} tags={getTags(data, pathname)} />
+      </Modal>
+    </PageLayout>
   );
 }
 
@@ -121,6 +125,5 @@ PostListLayout.propTypes = {
       ).isRequired,
     }).isRequired,
   }).isRequired,
-  description: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };

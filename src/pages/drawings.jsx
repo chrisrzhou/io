@@ -1,48 +1,27 @@
-import React from 'react';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { graphql, Link } from 'gatsby';
-import Image from 'gatsby-image';
+import React from 'react';
 
-import Layout from 'layouts/Layout';
-import { Box, FlexList } from 'ui';
+import GalleryLayout from 'layouts/GalleryLayout';
+import { pluralize } from 'utils';
 
 export default function DrawingsPage({ data }) {
+  const entries = data.allImageSharp.edges.map(({ node }) => {
+    const { fields, fluid, id } = node;
+    return {
+      id,
+      preview: fluid.src,
+      slug: fields.slug,
+      subtitle: fields.exif.date,
+      title: fluid.originalName,
+    };
+  });
   return (
-    <Layout description="Mostly ink drawings" title="Drawings">
-      <FlexList flexDirection="column" spacing={4}>
-        {data.allImageSharp.edges.map(({ node }) => {
-          const { fields, fluid, id } = node;
-          return (
-            <Box
-              as={Link}
-              css={`
-                position: relative;
-              `}
-              key={id}
-              to={fields.slug}
-            >
-              <Box
-                css={`
-                  :hover {
-                    filter: brightness(110%);
-                  }
-                `}
-              >
-                <Image fluid={fluid} style={{ height: 300 }} />
-                <Box
-                  css={`
-                    position: absolute;
-                    top: 0;
-                  `}
-                >
-                  {fluid.originalName}
-                </Box>
-              </Box>
-            </Box>
-          );
-        })}
-      </FlexList>
-    </Layout>
+    <GalleryLayout
+      entries={entries}
+      subtitle={`${pluralize('entry', entries.length)} found`}
+      title="Drawings"
+    />
   );
 }
 
@@ -57,18 +36,15 @@ export const pageQuery = graphql`
         node {
           id
           ... on ImageSharp {
-            fluid(maxWidth: 800) {
-              aspectRatio
-              src
-              srcSet
-              sizes
-              originalName
-            }
             fields {
               slug
               exif {
                 date(formatString: "YYYY-MM-DD")
               }
+            }
+            fluid(maxWidth: 800) {
+              originalName
+              src
             }
           }
         }

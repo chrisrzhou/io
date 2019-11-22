@@ -1,4 +1,4 @@
-// simple 'hacky' method plurarize words
+// simple 'hacky' method to plurarize words
 export function pluralize(word, count) {
   let pluralized = word;
   if (count !== 1) {

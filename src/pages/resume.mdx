@@ -1,14 +1,7 @@
-import Layout from "layouts/Layout";
+import PageLayout from "layouts/PageLayout";
 
 export default function ResumePage({ children }) {
-  return (
-    <Layout
-      description="Professional experience, skills and achievements."
-      title="Resume"
-    >
-      {children}
-    </Layout>
-  );
+  return <PageLayout title="Resume">{children}</PageLayout>;
 }
 
 This is my resume

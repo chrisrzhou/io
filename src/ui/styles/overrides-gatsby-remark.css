@@ -1,0 +1,19 @@
+a.anchor {
+  margin-left: -20px;
+  opacity: 0;
+  padding-right: var(--space-xs);
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+  opacity: 1;
+}
+
+.footnotes {
+  color: var(--color-gray2);
+  font-size: var(--font-size-xs);
+  padding-top: var(--space-xl);
+}

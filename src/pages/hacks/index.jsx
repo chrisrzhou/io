@@ -1,14 +1,7 @@
 import React from 'react';
 
-import Layout from 'layouts/Layout';
+import PageLayout from 'layouts/PageLayout';
 
 export default function HacksPage() {
-  return (
-    <Layout
-      description="Web projects focusing on data, visualizations and algorithms."
-      title="Hacks"
-    >
-      Hacks
-    </Layout>
-  );
+  return <PageLayout title="Hacks">to be updated</PageLayout>;
 }

@@ -1,17 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import PostListLayout from 'layouts/PostListLayout';
 
 export default function PostsPage({ data }) {
-  return (
-    <PostListLayout
-      data={data}
-      description="Writings about technology, philosophy and other random things."
-      title="Posts"
-    />
-  );
+  return <PostListLayout data={data} title="Posts" />;
 }
 
 PostsPage.propTypes = {

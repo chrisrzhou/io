@@ -3,19 +3,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Image from 'gatsby-image';
 
-import Layout from './Layout';
+import PageLayout from './PageLayout';
 
 export default function DrawingLayout({ data }) {
   const { fields, fluid } = data.imageSharp;
 
   return (
-    <Layout
-      description="drawing"
-      subtitle={fields.exif.date}
-      title={fluid.originalName}
-    >
+    <PageLayout subtitle={fields.exif.date} title={fluid.originalName}>
       <Image fluid={fluid} />
-    </Layout>
+    </PageLayout>
   );
 }
 

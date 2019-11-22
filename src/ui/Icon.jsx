@@ -37,12 +37,12 @@ const PATHS = {
 };
 
 const SIZES = {
-  small: 12,
-  medium: 16,
-  large: 24,
+  s: 12,
+  m: 16,
+  l: 20,
 };
 
-export default function Icon({ icon, size = 'medium', ...rest }) {
+export default function Icon({ icon, size = 'm', ...rest }) {
   return (
     <Flex
       alignItems="center"
@@ -54,7 +54,6 @@ export default function Icon({ icon, size = 'medium', ...rest }) {
       {...rest}
     >
       <svg
-        xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -72,5 +71,5 @@ export default function Icon({ icon, size = 'medium', ...rest }) {
 
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(Object.keys(SIZES)),
 };

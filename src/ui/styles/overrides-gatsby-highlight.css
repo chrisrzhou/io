@@ -1,13 +1,13 @@
 /* https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-remark-prismjs */
 
 .gatsby-highlight-code-line {
-  background-color: var(--primary);
+  background-color: var(--color-primary);
+  border-left: 0.25em solid var(--color-primary);
   display: block;
-  margin-right: -1em;
   margin-left: -1em;
-  padding-right: 1em;
+  margin-right: -1em;
   padding-left: 0.75em;
-  border-left: 0.25em solid var(--primary);
+  padding-right: 1em;
 }
 
 /**
@@ -15,12 +15,11 @@
  * and overflow that we removed from <pre>.
  */
 .gatsby-highlight {
-  background-color: var(--background);
-  border: 1px solid var(--gray3);
-  border-radius: 0.3em;
-  margin: 0.5em 0;
-  padding: 1em;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-gray3);
+  margin: var(--space-xs) 0;
   overflow: auto;
+  padding: var(--space-s);
 }
 
 /**
@@ -32,15 +31,28 @@
  */
 .gatsby-highlight pre[class*="language-"] {
   background-color: transparent;
-  margin: 0;
-  padding: 0;
-  overflow: initial;
   float: left; /* 1 */
+  margin: 0;
   min-width: 100%; /* 2 */
+  overflow: initial;
+  padding: 0;
 }
 
 /* Adjust the position of the line numbers */
 .gatsby-highlight pre[class*="language-"].line-numbers {
   box-sizing: border-box;
-  padding-left: 2.8em;
+  padding-left: 3em;
+}
+
+/* Use application font family and background */
+.gatsby-highlight pre[class*="language-"],
+.gatsby-highlight code[class*="language-"],
+code[class*="language-text"] {
+  font-family: var(--font-family-monospace);
+  font-size: var(--font-size-s);
+}
+:not(pre) > code[class*="language-"] {
+  background: var(--color-primary);
+  border-radius: 0.2rem;
+  padding: 0 0.2rem;
 }

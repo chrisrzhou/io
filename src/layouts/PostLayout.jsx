@@ -3,18 +3,21 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Layout from './Layout';
+import PageLayout from './PageLayout';
 import TableOfContents from 'components/TableOfContents';
-import { FlexList, Tag } from 'ui';
+import { useToggle } from 'hooks';
+import { FlexList, Icon, Modal, Tag } from 'ui';
 
 export default function PostLayout({ data, pageContext }) {
-  const { body, excerpt, frontmatter, tableOfContents, timeToRead } = data.mdx;
+  const [shown, show, hide] = useToggle(false);
+
+  const { body, frontmatter, tableOfContents, timeToRead } = data.mdx;
   const { date, tags, title } = frontmatter;
 
   const subtitle = (
     <FlexList flexWrap="wrap">
       <div>{date}</div>
-      <div>{timeToRead}min</div>
+      <div>{`${timeToRead}min`}</div>
       {(tags || []).map(tag => (
         <Tag
           key={tag}
@@ -26,14 +29,26 @@ export default function PostLayout({ data, pageContext }) {
   );
 
   return (
-    <Layout
-      description={excerpt}
-      headerExtraContent={<TableOfContents contents={tableOfContents} />}
+    <PageLayout
+      action={
+        tableOfContents.items && (
+          <Icon
+            as="a"
+            icon="book"
+            onClick={show}
+            size="l"
+            title="Table of contents"
+          />
+        )
+      }
       subtitle={subtitle}
       title={title}
     >
       <MDXRenderer>{body}</MDXRenderer>
-    </Layout>
+      <Modal onDismiss={hide} shown={shown} title="Table of Contents">
+        <TableOfContents contents={tableOfContents} onSelectContent={hide} />
+      </Modal>
+    </PageLayout>
   );
 }
 
@@ -47,16 +62,15 @@ PostLayout.propTypes = {
 export const pageQuery = graphql`
   query post($id: String) {
     mdx(id: { eq: $id }) {
-      id
       body
-      excerpt
       frontmatter {
         date(formatString: "YYYY-MM-DD")
-        title
         tags
+        title
       }
-      timeToRead
+      id
       tableOfContents
+      timeToRead
     }
   }
 `;
