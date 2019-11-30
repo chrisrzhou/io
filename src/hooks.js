@@ -1,16 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
 
-export function useHideScroll(element, hide) {
-  useEffect(() => {
-    if (hide) {
-      element.className = 'no-scroll';
-    }
-    return () => {
-      element.className = '';
-    };
-  }, [element, hide]);
-}
-
 export function useHotkey(keyMap) {
   const handleKeydown = useCallback(
     e => {

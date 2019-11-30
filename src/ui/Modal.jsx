@@ -1,14 +1,22 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Box from './Box';
 import Container from './Container';
 import Flex from './Flex';
 import Icon from './Icon';
-import { useHideScroll, useHotkey } from 'hooks';
+import { useHotkey } from 'hooks';
 
 export default function Modal({ children, onDismiss, shown, title }) {
-  useHideScroll(document.body, shown);
+  useEffect(() => {
+    if (shown) {
+      document.body.className = 'no-scroll';
+    }
+    return () => {
+      document.body.className = '';
+    };
+  }, [shown]);
+
   useHotkey({ Escape: onDismiss });
 
   if (!shown) {
