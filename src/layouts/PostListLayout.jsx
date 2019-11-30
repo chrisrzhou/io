@@ -7,14 +7,12 @@ import Tags from 'components/Tags';
 import PageLayout from './PageLayout';
 import { TAG_SEARCH_PARAM } from 'enums';
 import { useToggle } from 'hooks';
-import { Box, FlexList, Icon, Modal, Tag } from 'ui';
+import { Box, FlexList, Modal, Tag } from 'ui';
 import { pluralize } from 'utils';
 
-function getTags(data, pathname) {
-  const { edges } = data.allMdx;
-  const tagsMap = edges.reduce((tagsCount, { node }) => {
-    const tags = node.frontmatter.tags || [];
-    tags.forEach(tag => {
+function getTags(entries, pathname) {
+  const tagsMap = entries.reduce((tagsCount, entry) => {
+    entry.tags.forEach(tag => {
       if (!tagsCount[tag]) {
         tagsCount[tag] = 0;
       }
@@ -40,13 +38,17 @@ export default function PostListLayout({ data, title }) {
   const entries = edges
     .map(({ node }) => {
       const { excerpt, fields, frontmatter, id, timeToRead } = node;
-      const { date, tags, title } = frontmatter;
+      const { date, isbn, title } = frontmatter;
+      let tags = frontmatter.tags || [];
+      if (isbn) {
+        tags = ['reading', ...tags];
+      }
       return {
         date,
         id,
         excerpt,
         fields,
-        tags: tags || [],
+        tags,
         timeToRead,
         title,
       };
@@ -68,19 +70,17 @@ export default function PostListLayout({ data, title }) {
     </>
   );
 
+  const actions = [{ icon: 'hash', onClick: show, title: 'Tags' }];
+
   return (
-    <PageLayout
-      action={<Icon as="a" icon="hash" onClick={show} size="l" title="Tags" />}
-      subtitle={subtitle}
-      title={title}
-    >
+    <PageLayout actions={actions} subtitle={subtitle} title={title}>
       <FlexList flexDirection="column" spacing={5}>
         {entries.map(entry => {
           const { date, excerpt, fields, id, tags, timeToRead, title } = entry;
           return (
             <FlexList key={id} flexDirection="column" spacing={0}>
               <Link to={fields.slug}>
-                <Box as="h2">{title}</Box>
+                <h2>{title}</h2>
               </Link>
               <FlexList color="gray3" flexWrap="wrap" fontSize="s" pb={2}>
                 <div>{date}</div>
@@ -97,7 +97,7 @@ export default function PostListLayout({ data, title }) {
         })}
       </FlexList>
       <Modal onDismiss={hide} shown={shown} title="Tags">
-        <Tags onSelectTag={hide} tags={getTags(data, pathname)} />
+        <Tags onSelectTag={hide} tags={getTags(entries, pathname)} />
       </Modal>
     </PageLayout>
   );
@@ -116,6 +116,7 @@ PostListLayout.propTypes = {
             }).isRequired,
             frontmatter: PropTypes.shape({
               date: PropTypes.string,
+              isbn: PropTypes.string,
               tags: PropTypes.arrayOf(PropTypes.string.isRequired),
               title: PropTypes.string,
             }),

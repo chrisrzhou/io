@@ -5,12 +5,12 @@ import React from 'react';
 import GalleryLayout from 'layouts/GalleryLayout';
 import { pluralize } from 'utils';
 
-export default function DrawingsPage({ data }) {
+export default function ArtPage({ data }) {
   const entries = data.allImageSharp.edges.map(({ node }) => {
     const { fields, fluid, id } = node;
     return {
       id,
-      preview: fluid.src,
+      previewSrc: fluid.src,
       slug: fields.slug,
       subtitle: fields.exif.date,
       title: fluid.originalName,
@@ -20,17 +20,17 @@ export default function DrawingsPage({ data }) {
     <GalleryLayout
       entries={entries}
       subtitle={`${pluralize('entry', entries.length)} found`}
-      title="Drawings"
+      title="Art"
     />
   );
 }
 
-DrawingsPage.propTypes = {
+ArtPage.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
-  query allDrawings {
+  query allArt {
     allImageSharp(sort: { order: DESC, fields: [fields___exif___date] }) {
       edges {
         node {

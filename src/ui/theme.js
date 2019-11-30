@@ -13,7 +13,7 @@ export default {
     gray1: '#d2d2d4',
     gray2: '#9f9fa3',
     gray3: '#4a4a4e',
-    primary: '#595983',
+    primary: '#7171a5',
   },
   space: ['0.0rem', '0.25rem', '0.5rem', '1rem', '2rem', '3rem'],
   fonts: {

@@ -1,35 +1,38 @@
 import PageLayout from "layouts/PageLayout";
+import { FlexList, Icon } from "ui";
 
 export default function AboutPage({ children }) {
-  return <PageLayout title="About">{children}</PageLayout>;
+  const subtitle =
+    "simple > complex | open > closed | choices > outcomes | experiences > products | humans > machines";
+  return (
+    <PageLayout subtitle={subtitle} title="About">
+      {children}
+    </PageLayout>
+  );
 }
 
-## TODOS
+## Manifesto
 
-- [x] Reimplement `Modal`
-- [ ] Implement `Calendar` to filter for posts in a given year/month (e.g. '2019-08')
-- [x] Implement `ArtPage` and `HacksPage`
-  - [x] Use `DrawingLayout`
-  - [ ] Use `HackLayout` for individual detail page.
-  - [x] Use `GalleryLayout` for list view.
-  - Render hacks/projects in iframe.
-- [ ] Update `ResumePage`
-- [ ] Update README (i.e. `AboutPage`)
-- [ ] `ScrollTop` icon button
-- [ ] Update index page
+Information (data) is all around us. It gives meaning to relevant parties, and power to irrelevant parties. I focus on using information for good and transform it into meaningful experiences for everyone.
 
-```jsx{0,3}
-const testPrismCode = ({ prop1, prop2 }) => {
-  return (
-    <div>
-      {prop1.map(p => {
-        return (
-          <div key={p}>
-            {prop2} {p}
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-```
+I work towards building a cheap and open future, where everyone is solving higher-order challenges without struggling with lower-order problems.
+
+I value choices over outcomes, as it reflects our priorities, principles and relationships with others. I believe it is important to augment human experiences in an age of digital consumerism that is eroding the human identity.
+
+## Interests
+
+Most of my work touch on the following broad interests:
+`data`, `visualization`, `ui`, `ux`, `design-system`, `open-source`, `automation`,
+
+and other specific interests:
+`jamstack`, `component-library`, `markdown`, `cheap-ui`, `progressive-documentation`, `genetic-algorithms`.
+
+## Tools
+
+As a hack-of-all-trades, I am unopinionated about tools and use what is best for the task.
+
+I have used the following tools to effectively transport/transform/render data in projects: `react`, `redux`, `graphql`, `d3`, `three`, `gatsby`, `netlify`, `jest`, `cypress`, `typescript`, `flow`, `python`, `sql`, `markdown`
+
+## Contact
+
+[Email](mailto:chrisrzhou@pm.me) | [Github](https://github.com/chrisrzhou)

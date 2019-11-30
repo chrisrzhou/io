@@ -12,7 +12,7 @@ module.exports = {
         short_name: 'chrisrzhou',
         start_url: '/',
         background_color: '#050511',
-        theme_color: '#595983',
+        theme_color: '#7171a5',
         display: 'minimal-ui',
         icon: 'favicon.ico',
       },
@@ -39,15 +39,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'books',
-        path: 'data/books',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'drawings',
-        path: 'data/drawings',
+        name: 'art',
+        path: 'data/art',
       },
     },
     {

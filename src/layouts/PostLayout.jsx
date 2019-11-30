@@ -6,7 +6,7 @@ import React from 'react';
 import PageLayout from './PageLayout';
 import TableOfContents from 'components/TableOfContents';
 import { useToggle } from 'hooks';
-import { FlexList, Icon, Modal, Tag } from 'ui';
+import { FlexList, Modal, Tag } from 'ui';
 
 export default function PostLayout({ data, pageContext }) {
   const [shown, show, hide] = useToggle(false);
@@ -28,22 +28,12 @@ export default function PostLayout({ data, pageContext }) {
     </FlexList>
   );
 
+  const actions = tableOfContents.items && [
+    { icon: 'book', onClick: show, title: 'Table of contents' },
+  ];
+
   return (
-    <PageLayout
-      action={
-        tableOfContents.items && (
-          <Icon
-            as="a"
-            icon="book"
-            onClick={show}
-            size="l"
-            title="Table of contents"
-          />
-        )
-      }
-      subtitle={subtitle}
-      title={title}
-    >
+    <PageLayout actions={actions} subtitle={subtitle} title={title}>
       <MDXRenderer>{body}</MDXRenderer>
       <Modal onDismiss={hide} shown={shown} title="Table of Contents">
         <TableOfContents contents={tableOfContents} onSelectContent={hide} />

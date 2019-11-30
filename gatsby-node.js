@@ -77,11 +77,9 @@ exports.createPages = async ({ actions, graphql }) => {
     });
   });
 
-  const allDrawings = await graphql(`
-    query allDrawings {
-      allImageSharp(
-        filter: { fields: { sourceInstanceName: { eq: "drawings" } } }
-      ) {
+  const allArt = await graphql(`
+    query allArt {
+      allImageSharp(filter: { fields: { sourceInstanceName: { eq: "art" } } }) {
         edges {
           node {
             id
@@ -94,12 +92,12 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `);
-  allDrawings.data.allImageSharp.edges.forEach(({ node }) => {
+  allArt.data.allImageSharp.edges.forEach(({ node }) => {
     const { fields, id } = node;
     const { slug, sourceInstanceName } = fields;
     createPage({
       path: slug,
-      component: path.resolve(`src/layouts/DrawingLayout.jsx`),
+      component: path.resolve(`src/layouts/ArtLayout.jsx`),
       context: {
         id,
         sourceInstanceName,

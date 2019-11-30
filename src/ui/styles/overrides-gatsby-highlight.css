@@ -1,8 +1,8 @@
 /* https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-remark-prismjs */
 
 .gatsby-highlight-code-line {
-  background-color: var(--color-primary);
-  border-left: 0.25em solid var(--color-primary);
+  background-color: var(--color-gray3);
+  border-left: 0.25em solid var(--color-gray3);
   display: block;
   margin-left: -1em;
   margin-right: -1em;
@@ -52,7 +52,7 @@ code[class*="language-text"] {
   font-size: var(--font-size-s);
 }
 :not(pre) > code[class*="language-"] {
-  background: var(--color-primary);
+  background: var(--color-gray3);
   border-radius: 0.2rem;
   padding: 0 0.2rem;
 }

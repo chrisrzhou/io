@@ -5,7 +5,7 @@ import Image from 'gatsby-image';
 
 import PageLayout from './PageLayout';
 
-export default function DrawingLayout({ data }) {
+export default function ArtLayout({ data }) {
   const { fields, fluid } = data.imageSharp;
 
   return (
@@ -15,7 +15,7 @@ export default function DrawingLayout({ data }) {
   );
 }
 
-DrawingLayout.propTypes = {
+ArtLayout.propTypes = {
   data: PropTypes.shape({
     imageSharp: PropTypes.object.isRequired,
   }).isRequired,
@@ -23,7 +23,7 @@ DrawingLayout.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query drawing($id: String) {
+  query art($id: String) {
     imageSharp(id: { eq: $id }) {
       id
       fluid {

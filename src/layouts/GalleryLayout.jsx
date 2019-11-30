@@ -10,7 +10,7 @@ export default function GalleryLayout({ entries, subtitle, title }) {
     <PageLayout subtitle={subtitle} title={title}>
       <FlexList flexDirection="column" spacing={5}>
         {entries.map(entry => {
-          const { id, preview, slug, subtitle, title } = entry;
+          const { id, previewSrc, slug, subtitle, title } = entry;
           return (
             <Box
               as={Link}
@@ -47,7 +47,7 @@ export default function GalleryLayout({ entries, subtitle, title }) {
             >
               <img
                 className="gallery-entry-image"
-                src={preview}
+                src={previewSrc}
                 style={{ height: 300 }}
               />
               <FlexList
@@ -57,12 +57,10 @@ export default function GalleryLayout({ entries, subtitle, title }) {
                 p={2}
                 spacing={0}
               >
-                <Box as="h2">{title}</Box>
-                {subtitle && (
-                  <Box color="gray3" fontSize="s">
-                    {subtitle}
-                  </Box>
-                )}
+                <h2>{title}</h2>
+                <Box color="gray3" fontSize="s">
+                  {subtitle}
+                </Box>
               </FlexList>
             </Box>
           );
@@ -76,7 +74,7 @@ GalleryLayout.propTypes = {
   entries: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      preview: PropTypes.object.isRequired, // gatsby-image fluid prop
+      previewSrc: PropTypes.string.isRequired,
       slug: PropTypes.string.isRequired,
       subtitle: PropTypes.node,
       title: PropTypes.string.isRequired,

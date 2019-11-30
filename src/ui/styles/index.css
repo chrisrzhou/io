@@ -5,7 +5,7 @@
   --color-gray1: #d2d2d4;
   --color-gray2: #9f9fa3;
   --color-gray3: #4a4a4e;
-  --color-primary: #595983;
+  --color-primary: #7171a5;
 
   --font-family-body: Archivo, sans-serif;
   --font-family-monospace: Roboto Mono, monospace;
@@ -24,7 +24,7 @@
   --space-l: 2rem;
   --space-xl: 3rem;
 
-  --height-header: 40px;
+  --z-index-modal: 2;
 }
 
 body {
@@ -34,8 +34,24 @@ body {
   font-size: var(--font-size-m);
   line-height: 1.5;
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 0;
+}
+
+* {
+  scroll-behavior: smooth;
+  scrollbar-color: var(--color-gray3) var(--color-background);
+  scrollbar-width: thin;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 
 a {

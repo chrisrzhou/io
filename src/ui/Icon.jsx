@@ -37,9 +37,9 @@ const PATHS = {
 };
 
 const SIZES = {
-  s: 12,
-  m: 16,
-  l: 20,
+  s: 16,
+  m: 20,
+  l: 24,
 };
 
 export default function Icon({ icon, size = 'm', ...rest }) {
