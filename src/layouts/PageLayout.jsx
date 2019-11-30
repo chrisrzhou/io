@@ -29,7 +29,7 @@ export default function PageLayout({
       <Container>
         <Flex
           css={`
-            animation: fade-in 1s;
+            animation: 0.5s fade-in;
           `}
           flexDirection="column"
           minHeight="100vh"

@@ -1,6 +1,11 @@
+const breakpointWidths = {
+  s: '768px',
+};
+
 // keep in sync with styles/index.css
 export default {
-  breakpoints: ['40em', '52em', '64em'],
+  breakpointWidths,
+  breakpoints: [breakpointWidths.s],
   fontSizes: {
     xs: '0.75rem',
     s: '0.85rem',
@@ -10,6 +15,7 @@ export default {
   },
   colors: {
     background: '#050511',
+    backgroundAlpha: 'rgba(0, 0, 0, 0.8)',
     gray1: '#d2d2d4',
     gray2: '#9f9fa3',
     gray3: '#4a4a4e',

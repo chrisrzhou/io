@@ -1,5 +1,5 @@
 import { globalHistory, navigate } from '@reach/router';
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
@@ -7,7 +7,7 @@ import Tags from 'components/Tags';
 import PageLayout from './PageLayout';
 import { TAG_SEARCH_PARAM } from 'enums';
 import { useToggle } from 'hooks';
-import { Box, FlexList, Modal, Tag } from 'ui';
+import { Flex, FlexList, Modal, Tag, TypeText } from 'ui';
 import { pluralize } from 'utils';
 
 function getTags(entries, pathname) {
@@ -29,37 +29,38 @@ function getTags(entries, pathname) {
 }
 
 export default function PostListLayout({ data, title }) {
+  const [activePostId, setActivePostId] = useState();
   const [shown, show, hide] = useToggle(false);
 
   const { edges } = data.allMdx;
   const { pathname, search } = globalHistory.location;
   const appliedTagValue = new URLSearchParams(search).get(TAG_SEARCH_PARAM);
 
-  const entries = edges
-    .map(({ node }) => {
-      const { excerpt, fields, frontmatter, id, timeToRead } = node;
-      const { date, isbn, title } = frontmatter;
-      let tags = frontmatter.tags || [];
-      if (isbn) {
-        tags = ['reading', ...tags];
-      }
-      return {
-        date,
-        id,
-        excerpt,
-        fields,
-        tags,
-        timeToRead,
-        title,
-      };
-    })
-    .filter(entry => {
-      return !appliedTagValue || entry.tags.includes(appliedTagValue);
-    });
+  const entries = edges.map(({ node }) => {
+    const { excerpt, fields, frontmatter, id, timeToRead } = node;
+    const { date, isbn, title } = frontmatter;
+    let tags = frontmatter.tags || [];
+    if (isbn) {
+      tags = ['reading', ...tags];
+    }
+    return {
+      date,
+      id,
+      excerpt,
+      fields,
+      tags,
+      timeToRead,
+      title,
+    };
+  });
+
+  const filteredEntries = entries.filter(entry => {
+    return !appliedTagValue || entry.tags.includes(appliedTagValue);
+  });
 
   const subtitle = (
     <>
-      {pluralize('entry', entries.length)} found
+      {pluralize('entry', filteredEntries.length)} found
       {appliedTagValue && (
         <>
           {' '}
@@ -75,10 +76,19 @@ export default function PostListLayout({ data, title }) {
   return (
     <PageLayout actions={actions} subtitle={subtitle} title={title}>
       <FlexList flexDirection="column" spacing={5}>
-        {entries.map(entry => {
+        {filteredEntries.map(entry => {
           const { date, excerpt, fields, id, tags, timeToRead, title } = entry;
           return (
-            <FlexList key={id} flexDirection="column" spacing={0}>
+            <FlexList
+              css={`
+                position: relative;
+              `}
+              flexDirection="column"
+              key={id}
+              onMouseEnter={() => setActivePostId(id)}
+              onMouseLeave={() => setActivePostId()}
+              spacing={0}
+            >
               <Link to={fields.slug}>
                 <h2>{title}</h2>
               </Link>
@@ -89,9 +99,25 @@ export default function PostListLayout({ data, title }) {
                   <Tag key={tag} pathname={pathname} value={tag} />
                 ))}
               </FlexList>
-              <Box color="gray2" fontFamily="serif">
-                {excerpt}
-              </Box>
+              {activePostId === id && (
+                <Flex
+                  alignItems="center"
+                  as={Link}
+                  bg="backgroundAlpha"
+                  color="gray2"
+                  css={`
+                    bottom: 0;
+                    left: 0;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                  `}
+                  fontFamily="serif"
+                  to={fields.slug}
+                >
+                  <TypeText delay={5} text={excerpt} />
+                </Flex>
+              )}
             </FlexList>
           );
         })}

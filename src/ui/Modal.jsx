@@ -26,7 +26,7 @@ export default function Modal({ children, onDismiss, shown, title }) {
   return (
     <Flex
       alignItems="center"
-      bg="rgba(0, 0, 0, 0.8)"
+      bg="backgroundAlpha"
       css={`
         bottom: 0;
         left: 0;
@@ -40,19 +40,22 @@ export default function Modal({ children, onDismiss, shown, title }) {
       <Container
         bg="background"
         css={`
-          animation: grow 0.5s, fade-in 1s;
+          animation: 0.3s grow, 0.5s fade-in;
           border: 1px solid var(--color-primary);
         `}
         onClick={e => e.stopPropagation()}
-        px={4}
-        py={3}
       >
-        <Flex flexDirection="column">
+        <Flex
+          flexDirection="column"
+          maxHeight={['100vh', '70vh']}
+          pb={4}
+          pt={3}
+        >
           <Flex pb={3} flexShrink={0} justifyContent="space-between">
             <h2>{title}</h2>
             <Icon as="a" icon="close" onClick={onDismiss} title="close" />
           </Flex>
-          <Box flexGrow={1} maxHeight="60vh" overflow="auto">
+          <Box flexGrow={1} overflow="auto">
             {children}
           </Box>
         </Flex>

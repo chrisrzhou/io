@@ -6,7 +6,7 @@ import GalleryLayout from 'layouts/GalleryLayout';
 import { pluralize } from 'utils';
 
 export default function ArtPage({ data }) {
-  const entries = data.allImageSharp.edges.map(({ node }) => {
+  const thumbnails = data.allImageSharp.edges.map(({ node }) => {
     const { fields, fluid, id } = node;
     return {
       id,
@@ -18,8 +18,8 @@ export default function ArtPage({ data }) {
   });
   return (
     <GalleryLayout
-      entries={entries}
-      subtitle={`${pluralize('entry', entries.length)} found`}
+      subtitle={`${pluralize('entry', thumbnails.length)} found`}
+      thumbnails={thumbnails}
       title="Art"
     />
   );

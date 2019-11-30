@@ -2,6 +2,7 @@
 
 :root {
   --color-background: #050511;
+  --color-backgroundAlpha: rgba(0, 0, 0, 0.9);
   --color-gray1: #d2d2d4;
   --color-gray2: #9f9fa3;
   --color-gray3: #4a4a4e;

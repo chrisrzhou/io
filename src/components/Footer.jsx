@@ -18,12 +18,13 @@ export default function Footer() {
       bg="background"
       css={`
         bottom: 0;
-        position: sticky;
+        position: fixed;
       `}
       flexWrap="wrap"
       fontFamily="monospace"
       fontSize="s"
       py={1}
+      width="100%"
     >
       {links.map(({ label, to }) => (
         <Link key={to} to={to}>
