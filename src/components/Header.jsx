@@ -33,6 +33,7 @@ export default function Header() {
       css={`
         position: sticky;
         top: 0;
+        z-index: var(--z-index-header);
       `}
       fontFamily="monospace"
       fontSize="s"

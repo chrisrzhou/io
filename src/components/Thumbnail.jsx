@@ -1,65 +1,62 @@
-import { Link } from 'gatsby';
-import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import * as customPropTypes from 'customPropTypes';
-import { Box, FlexList, TypeText } from 'ui';
+import { Box, Flex } from 'ui';
 
-export default function Thumbnail({ thumbnail }) {
-  const [showDetail, setShowDetail] = useState(false);
-
-  const { previewSrc, slug, subtitle, title } = thumbnail;
+export default function Thumbnail({ height = 300, thumbnail, onClick }) {
+  const { preview, title } = thumbnail;
 
   return (
     <Box
-      as={Link}
       css={`
+        cursor: pointer;
         position: relative;
-      `}
-      onMouseEnter={() => setShowDetail(true)}
-      onMouseLeave={() => setShowDetail(false)}
-      to={slug}
-    >
-      <Box
-        as="img"
-        css={`
-          object-fit: cover;
-          transition: filter 0.3s ease-in-out;
-          width: 100%;
 
-          :hover {
-            filter: brightness(1.3);
-          }
-        `}
-        src={previewSrc}
-        style={{ height: 300 }}
-      />
-      {showDetail && (
-        <FlexList
-          alignItems="baseline"
-          css={`
-            animation: 0.3s fade-in;
-            background: var(--color-backgroundAlpha);
-            bottom: 0;
-            left: 0;
-            position: absolute;
-            right: 0;
-          `}
-          justifyContent="space-between"
-          p={2}
-          spacing={0}
-        >
-          <h2>
-            <TypeText text={title} />
-          </h2>
-          <Box color="gray3" fontSize="s">
-            {subtitle}
-          </Box>
-        </FlexList>
-      )}
+        .thumbnail-preview {
+          filter: brightness(0.5);
+          transform: scale(0.9);
+          transition: 0.5s filter ease-in-out, 0.3s transform ease-in-out;
+        }
+        :hover .thumbnail-preview {
+          filter: brightness(1);
+          transform: scale(1);
+        }
+
+        .thumbnail-title {
+          bottom: 0;
+          color: var(--color-white);
+          left: 0;
+          opacity: 1;
+          position: absolute;
+          right: 0;
+          top: 0;
+          text-shadow: 1px 1px var(--color-gray3);
+          transition: 0.5s opacity ease-in-out;
+        }
+        :hover .thumbnail-title {
+          opacity: 0;
+        }
+      `}
+      onClick={onClick}
+    >
+      <Box height={height} className="thumbnail-preview">
+        {preview}
+      </Box>
+      <Flex
+        alignItems="center"
+        className="thumbnail-title"
+        color="gray1"
+        justifyContent="center"
+      >
+        <h2>{title}</h2>
+      </Flex>
     </Box>
   );
 }
 
 Thumbnail.propTypes = {
+  height: PropTypes.number,
+  onClick: PropTypes.func.isRequired,
   thumbnail: customPropTypes.thumbnail.isRequired,
 };

@@ -7,7 +7,7 @@ import Tags from 'components/Tags';
 import PageLayout from './PageLayout';
 import { TAG_SEARCH_PARAM } from 'enums';
 import { useToggle } from 'hooks';
-import { Flex, FlexList, Modal, Tag, TypeText } from 'ui';
+import { Flex, FlexList, InfoText, Modal, Tag, TypeText } from 'ui';
 import { pluralize } from 'utils';
 
 function getTags(entries, pathname) {
@@ -92,9 +92,9 @@ export default function PostListLayout({ data, title }) {
               <Link to={fields.slug}>
                 <h2>{title}</h2>
               </Link>
-              <FlexList color="gray3" flexWrap="wrap" fontSize="s" pb={2}>
-                <div>{date}</div>
-                <div>{`${timeToRead}min`}</div>
+              <FlexList flexWrap="wrap" pb={2}>
+                <InfoText>{date}</InfoText>
+                <InfoText>{`${timeToRead}min`}</InfoText>
                 {tags.map(tag => (
                   <Tag key={tag} pathname={pathname} value={tag} />
                 ))}
@@ -123,7 +123,11 @@ export default function PostListLayout({ data, title }) {
         })}
       </FlexList>
       <Modal onDismiss={hide} shown={shown} title="Tags">
-        <Tags onSelectTag={hide} tags={getTags(entries, pathname)} />
+        <Tags
+          flexDirection="column"
+          onSelectTag={hide}
+          tags={getTags(entries, pathname)}
+        />
       </Modal>
     </PageLayout>
   );

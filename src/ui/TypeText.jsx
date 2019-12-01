@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import Box from './Box';
 
-export default function TypeText({ delay = 50, text }) {
+export default function TypeText({ delay = 80, text, ...rest }) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function TypeText({ delay = 50, text }) {
     };
   }, [delay, index, text.length]);
 
-  return <Box>{text.slice(0, index)}</Box>;
+  return <Box {...rest}>{text.slice(0, index)}</Box>;
 }
 
 TypeText.propTypes = {

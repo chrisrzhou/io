@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { FlexList } from 'ui';
+import { FlexList, InfoText } from 'ui';
 
 function renderContents(contents, onSelectContent, depth = 0) {
   return (contents.items || []).map(item => (
-    <FlexList color="gray3" flexDirection="column" key={item.url} spacing={1}>
-      <FlexList spacing={1}>
-        <div>{'#'.repeat(depth + 1)}</div>
+    <FlexList flexDirection="column" key={item.url} spacing={1}>
+      <FlexList alignItems="baseline" spacing={1}>
+        <InfoText>{'#'.repeat(depth + 1)}</InfoText>
         <a href={item.url} onClick={onSelectContent}>
           {item.title}
         </a>

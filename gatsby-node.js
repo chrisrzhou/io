@@ -76,32 +76,4 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     });
   });
-
-  const allArt = await graphql(`
-    query allArt {
-      allImageSharp(filter: { fields: { sourceInstanceName: { eq: "art" } } }) {
-        edges {
-          node {
-            id
-            fields {
-              sourceInstanceName
-              slug
-            }
-          }
-        }
-      }
-    }
-  `);
-  allArt.data.allImageSharp.edges.forEach(({ node }) => {
-    const { fields, id } = node;
-    const { slug, sourceInstanceName } = fields;
-    createPage({
-      path: slug,
-      component: path.resolve(`src/layouts/ArtLayout.jsx`),
-      context: {
-        id,
-        sourceInstanceName,
-      },
-    });
-  });
 };

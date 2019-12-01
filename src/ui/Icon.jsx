@@ -28,11 +28,14 @@ const PATHS = {
       <line x1="16" y1="3" x2="14" y2="21" />
     </>
   ),
-  mail: (
+  link: (
     <>
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-      <polyline points="22,6 12,13 2,6" />
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
     </>
+  ),
+  star: (
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
   ),
 };
 
@@ -42,15 +45,26 @@ const SIZES = {
   l: 24,
 };
 
-export default function Icon({ icon, size = 'm', ...rest }) {
+export default function Icon({
+  icon,
+  isInverted = false,
+  size = 'm',
+  onClick,
+  ...rest
+}) {
   return (
     <Flex
       alignItems="center"
+      bg={isInverted ? 'primary' : undefined}
+      color={isInverted ? 'background' : undefined}
       css={`
         svg {
           height: ${SIZES[size]}px;
         }
       `}
+      flexShrink={0}
+      onClick={onClick}
+      p={isInverted ? 1 : undefined}
       {...rest}
     >
       <svg
@@ -71,5 +85,7 @@ export default function Icon({ icon, size = 'm', ...rest }) {
 
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
+  isInverted: PropTypes.bool,
+  onClick: PropTypes.func,
   size: PropTypes.oneOf(Object.keys(SIZES)),
 };

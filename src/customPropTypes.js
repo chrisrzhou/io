@@ -8,8 +8,8 @@ export const action = PropTypes.shape({
 
 export const thumbnail = PropTypes.shape({
   id: PropTypes.string.isRequired,
-  previewSrc: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
+  preview: PropTypes.node.isRequired,
+  render: PropTypes.node,
   subtitle: PropTypes.node,
   title: PropTypes.string.isRequired,
 });

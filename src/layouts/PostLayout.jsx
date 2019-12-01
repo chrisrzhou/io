@@ -6,9 +6,10 @@ import React from 'react';
 import PageLayout from './PageLayout';
 import TableOfContents from 'components/TableOfContents';
 import { useToggle } from 'hooks';
+import * as routes from 'routes';
 import { FlexList, Modal, Tag } from 'ui';
 
-export default function PostLayout({ data, pageContext }) {
+export default function PostLayout({ data }) {
   const [shown, show, hide] = useToggle(false);
 
   const { body, frontmatter, tableOfContents, timeToRead } = data.mdx;
@@ -19,11 +20,7 @@ export default function PostLayout({ data, pageContext }) {
       <div>{date}</div>
       <div>{`${timeToRead}min`}</div>
       {(tags || []).map(tag => (
-        <Tag
-          key={tag}
-          pathname={`/${pageContext.sourceInstanceName}`}
-          value={tag}
-        />
+        <Tag key={tag} pathname={routes.POSTS} value={tag} />
       ))}
     </FlexList>
   );
@@ -46,7 +43,6 @@ PostLayout.propTypes = {
   data: PropTypes.shape({
     mdx: PropTypes.object.isRequired,
   }).isRequired,
-  pageContext: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`

@@ -3,10 +3,12 @@
 :root {
   --color-background: #050511;
   --color-backgroundAlpha: rgba(0, 0, 0, 0.9);
+  --color-black: #000000;
   --color-gray1: #d2d2d4;
   --color-gray2: #9f9fa3;
   --color-gray3: #4a4a4e;
   --color-primary: #7171a5;
+  --color-white: #ffffff;
 
   --font-family-body: Archivo, sans-serif;
   --font-family-monospace: Roboto Mono, monospace;
@@ -25,7 +27,10 @@
   --space-l: 2rem;
   --space-xl: 3rem;
 
-  --z-index-modal: 2;
+  --z-index-action: 3;
+  --z-index-base: 1;
+  --z-index-header: 2;
+  --z-index-modal: 4;
 }
 
 body {

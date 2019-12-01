@@ -3,21 +3,44 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import GalleryLayout from 'layouts/GalleryLayout';
+import { Box } from 'ui';
 import { pluralize } from 'utils';
 
-export default function ArtPage({ data }) {
+function PreviewRender({ isPreview = false, src }) {
+  return (
+    <Box
+      as="img"
+      css={`
+        object-fit: cover;
+      `}
+      src={src}
+      height={isPreview ? '100%' : undefined}
+      width="100%"
+    />
+  );
+}
+
+PreviewRender.propTypes = {
+  isPreview: PropTypes.bool,
+  src: PropTypes.string.isRequired,
+};
+
+export default function ArtPage({ data, location }) {
   const thumbnails = data.allImageSharp.edges.map(({ node }) => {
     const { fields, fluid, id } = node;
+    const { src } = fluid;
+
     return {
       id,
-      previewSrc: fluid.src,
-      slug: fields.slug,
+      preview: <PreviewRender isPreview src={src} />,
+      render: <PreviewRender src={src} />,
       subtitle: fields.exif.date,
       title: fluid.originalName,
     };
   });
   return (
     <GalleryLayout
+      location={location}
       subtitle={`${pluralize('entry', thumbnails.length)} found`}
       thumbnails={thumbnails}
       title="Art"
@@ -27,6 +50,7 @@ export default function ArtPage({ data }) {
 
 ArtPage.propTypes = {
   data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
@@ -37,7 +61,6 @@ export const pageQuery = graphql`
           id
           ... on ImageSharp {
             fields {
-              slug
               exif {
                 date(formatString: "YYYY-MM-DD")
               }

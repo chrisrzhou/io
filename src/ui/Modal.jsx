@@ -4,10 +4,17 @@ import React, { useEffect } from 'react';
 import Box from './Box';
 import Container from './Container';
 import Flex from './Flex';
+import InfoText from './InfoText';
 import Icon from './Icon';
-import { useHotkey } from 'hooks';
 
-export default function Modal({ children, onDismiss, shown, title }) {
+export default function Modal({
+  children,
+  isFullViewport = false,
+  onDismiss,
+  shown,
+  subtitle,
+  title,
+}) {
   useEffect(() => {
     if (shown) {
       document.body.className = 'no-scroll';
@@ -17,10 +24,22 @@ export default function Modal({ children, onDismiss, shown, title }) {
     };
   }, [shown]);
 
-  useHotkey({ Escape: onDismiss });
-
   if (!shown) {
     return null;
+  }
+
+  const modalContainerProps = {
+    bg: 'background',
+    css: `
+      animation: 0.5s grow, 0.5s fade-in;
+      border: 1px solid var(--color-primary);
+    `,
+    onClick: e => e.stopPropagation(),
+  };
+
+  if (isFullViewport) {
+    modalContainerProps.height = '100vh';
+    modalContainerProps.width = '100vw';
   }
 
   return (
@@ -37,24 +56,21 @@ export default function Modal({ children, onDismiss, shown, title }) {
       `}
       onClick={onDismiss}
     >
-      <Container
-        bg="background"
-        css={`
-          animation: 0.3s grow, 0.5s fade-in;
-          border: 1px solid var(--color-primary);
-        `}
-        onClick={e => e.stopPropagation()}
-      >
+      <Container {...modalContainerProps}>
         <Flex
           flexDirection="column"
-          maxHeight={['100vh', '70vh']}
+          height="100%"
+          maxHeight={isFullViewport ? '100vh' : ['100vh', '70vh']}
           pb={4}
           pt={3}
         >
-          <Flex pb={3} flexShrink={0} justifyContent="space-between">
-            <h2>{title}</h2>
-            <Icon as="a" icon="close" onClick={onDismiss} title="close" />
-          </Flex>
+          <Box pb={3}>
+            <Flex flexShrink={0} justifyContent="space-between">
+              <h2 className="truncate">{title}</h2>
+              <Icon as="a" icon="close" onClick={onDismiss} title="close" />
+            </Flex>
+            {subtitle && <InfoText flexShrink={0}>{subtitle}</InfoText>}
+          </Box>
           <Box flexGrow={1} overflow="auto">
             {children}
           </Box>
@@ -66,7 +82,9 @@ export default function Modal({ children, onDismiss, shown, title }) {
 
 Modal.propTypes = {
   children: PropTypes.node.isRequired,
+  isFullViewport: PropTypes.bool,
   onDismiss: PropTypes.func.isRequired,
   shown: PropTypes.bool.isRequired,
+  subtitle: PropTypes.node,
   title: PropTypes.string.isRequired,
 };

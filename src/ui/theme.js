@@ -16,10 +16,12 @@ export default {
   colors: {
     background: '#050511',
     backgroundAlpha: 'rgba(0, 0, 0, 0.8)',
+    black: '#000000',
     gray1: '#d2d2d4',
     gray2: '#9f9fa3',
     gray3: '#4a4a4e',
     primary: '#7171a5',
+    white: '#ffffff',
   },
   space: ['0.0rem', '0.25rem', '0.5rem', '1rem', '2rem', '3rem'],
   fonts: {

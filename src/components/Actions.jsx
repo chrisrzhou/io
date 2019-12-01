@@ -7,22 +7,21 @@ import { Flex, Icon } from 'ui';
 export default function Actions({ actions }) {
   return (
     <Flex
-      bg="primary"
       css={`
         position: fixed;
         right: 0;
         top: 0;
+        z-index: var(--z-index-action);
       `}
       flexDirection="column"
     >
       {actions.map(({ icon, onClick, title }) => (
         <Icon
           as="a"
-          color="background"
           icon={icon}
+          isInverted
           key={icon}
           onClick={onClick}
-          p={1}
           title={title}
         />
       ))}

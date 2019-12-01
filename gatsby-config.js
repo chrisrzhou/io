@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: 'chrisrzhou.io',
@@ -48,6 +50,49 @@ module.exports = {
       options: {
         name: 'posts',
         path: 'data/posts',
+      },
+    },
+    {
+      resolve: 'gatsby-source-github-api',
+      options: {
+        token: process.env.GITHUB_API_TOKEN,
+        variables: {
+          allReposQuery:
+            'user:chrisrzhou is:public archived:false topic:io sort:stars',
+        },
+        graphQLQuery: `
+        query allRepos($allReposQuery: String!) {
+          search(query: $allReposQuery, type: REPOSITORY, first: 50) {
+            edges {
+              node {
+                ... on Repository {
+                  id
+                  name
+                  description
+                  homepageUrl
+                  url
+                  pushedAt
+                  repositoryTopics(first: 50) {
+                    edges {
+                      node {
+                        id
+                        topic {
+                          id
+                          name
+                        }
+                      }
+                    }
+                  }
+                  stargazers {
+                    totalCount
+                  }
+                }
+              }
+            }
+          }
+        }
+        
+        `,
       },
     },
     'gatsby-transformer-sharp',

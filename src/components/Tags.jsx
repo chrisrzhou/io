@@ -2,12 +2,12 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { FlexList, Tag } from 'ui';
+import { FlexList, InfoText, Tag } from 'ui';
 
 export default function Tags({ onSelectTag, tags }) {
   return (
-    <FlexList color="gray3" flexDirection="column" fontSize="s" spacing={1}>
-      {tags.length === 0 && <div>No tags found.</div>}
+    <FlexList flexDirection="column" spacing={1}>
+      {tags.length === 0 && <InfoText>No tags found.</InfoText>}
       {_.orderBy(tags, ['count', 'value'], ['desc', 'asc']).map(
         ({ count, pathname, value }) => (
           <Tag

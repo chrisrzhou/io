@@ -7,7 +7,7 @@ import Actions from 'components/Actions';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import * as customPropTypes from 'customPropTypes';
-import { Box, Container, Flex, theme } from 'ui';
+import { Box, Container, Flex, InfoText, theme } from 'ui';
 
 export default function PageLayout({
   actions = [],
@@ -38,9 +38,7 @@ export default function PageLayout({
           <Box as="main" flexGrow={1} pb={5} pt={2}>
             <Actions actions={actions} />
             <h1>{title}</h1>
-            <Box color="gray3" fontSize="s" pb={4}>
-              {subtitle}
-            </Box>
+            <InfoText pb={4}>{subtitle}</InfoText>
             {children}
           </Box>
           <Footer />
