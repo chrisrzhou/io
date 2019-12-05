@@ -61,37 +61,37 @@ module.exports = {
             'user:chrisrzhou is:public archived:false topic:io sort:stars',
         },
         graphQLQuery: `
-        query allRepos($allReposQuery: String!) {
-          search(query: $allReposQuery, type: REPOSITORY, first: 50) {
-            edges {
-              node {
-                ... on Repository {
-                  id
-                  name
-                  description
-                  homepageUrl
-                  url
-                  pushedAt
-                  repositoryTopics(first: 50) {
-                    edges {
-                      node {
-                        id
-                        topic {
+          query github($allReposQuery: String!) {
+            repos: search(query: $allReposQuery, type: REPOSITORY, first: 50) {
+              edges {
+                node {
+                  ... on Repository {
+                    id
+                    name
+                    description
+                    homepageUrl
+                    url
+                    pushedAt
+                    openGraphImageUrl
+                    repositoryTopics(first: 50) {
+                      edges {
+                        node {
                           id
-                          name
+                          topic {
+                            id
+                            name
+                          }
                         }
                       }
                     }
-                  }
-                  stargazers {
-                    totalCount
+                    stargazers {
+                      totalCount
+                    }
                   }
                 }
               }
             }
           }
-        }
-        
         `,
       },
     },

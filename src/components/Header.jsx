@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import React from 'react';
 
 import * as routes from 'routes';
-import { Flex, TypeText } from 'ui';
+import { Flex, Icon, TypeText } from 'ui';
 
 export default function Header() {
   let route = '';
@@ -31,6 +31,7 @@ export default function Header() {
       as="header"
       bg="background"
       css={`
+        min-height: 32px;
         position: sticky;
         top: 0;
         z-index: var(--z-index-header);
@@ -41,10 +42,9 @@ export default function Header() {
     >
       {navcrumbs.map(({ label, route }, i) => {
         return (
-          <Flex flexShrink={0} key={route}>
-            <Link to={route}>
-              {i < navcrumbs.length - 1 ? label : <TypeText text={label} />}
-            </Link>
+          <Flex as={Link} flexShrink={0} key={route} to={route}>
+            {i === 0 && <Icon icon="commit" size="s" />}
+            {i < navcrumbs.length - 1 ? label : <TypeText text={label} />}
           </Flex>
         );
       })}

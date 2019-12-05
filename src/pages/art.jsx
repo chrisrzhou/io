@@ -3,54 +3,24 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import GalleryLayout from 'layouts/GalleryLayout';
-import { Box } from 'ui';
-import { pluralize } from 'utils';
 
-function PreviewRender({ isPreview = false, src }) {
-  return (
-    <Box
-      as="img"
-      css={`
-        object-fit: cover;
-      `}
-      src={src}
-      height={isPreview ? '100%' : undefined}
-      width="100%"
-    />
-  );
-}
-
-PreviewRender.propTypes = {
-  isPreview: PropTypes.bool,
-  src: PropTypes.string.isRequired,
-};
-
-export default function ArtPage({ data, location }) {
+export default function ArtPage({ data }) {
   const thumbnails = data.allImageSharp.edges.map(({ node }) => {
     const { fields, fluid, id } = node;
     const { src } = fluid;
-
     return {
       id,
-      preview: <PreviewRender isPreview src={src} />,
-      render: <PreviewRender src={src} />,
-      subtitle: fields.exif.date,
+      previewImageSrc: src,
+      slug: fields.slug,
+      tags: [],
       title: fluid.originalName,
     };
   });
-  return (
-    <GalleryLayout
-      location={location}
-      subtitle={`${pluralize('entry', thumbnails.length)} found`}
-      thumbnails={thumbnails}
-      title="Art"
-    />
-  );
+  return <GalleryLayout thumbnails={thumbnails} title="Art" />;
 }
 
 ArtPage.propTypes = {
   data: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
@@ -64,6 +34,7 @@ export const pageQuery = graphql`
               exif {
                 date(formatString: "YYYY-MM-DD")
               }
+              slug
             }
             fluid(maxWidth: 800) {
               originalName

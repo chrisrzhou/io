@@ -12,7 +12,7 @@ import { Box, Container, Flex, InfoText, theme } from 'ui';
 export default function PageLayout({
   actions = [],
   children,
-  subtitle,
+  description,
   title,
 }) {
   // force-scroll to hash if it exists
@@ -35,12 +35,14 @@ export default function PageLayout({
           minHeight="100vh"
         >
           <Header />
-          <Box as="main" flexGrow={1} pb={5} pt={2}>
+          <Flex as="main" flexDirection="column" flexGrow={1} pb={5} pt={2}>
             <Actions actions={actions} />
-            <h1>{title}</h1>
-            <InfoText pb={4}>{subtitle}</InfoText>
+            <Box flexShrink={0}>
+              <h1>{title}</h1>
+              <InfoText pb={4}>{description}</InfoText>
+            </Box>
             {children}
-          </Box>
+          </Flex>
           <Footer />
         </Flex>
       </Container>
@@ -51,6 +53,6 @@ export default function PageLayout({
 PageLayout.propTypes = {
   actions: PropTypes.arrayOf(customPropTypes.action.isRequired),
   children: PropTypes.node.isRequired,
-  subtitle: PropTypes.node,
+  description: PropTypes.node,
   title: PropTypes.string.isRequired,
 };

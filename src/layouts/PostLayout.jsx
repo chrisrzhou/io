@@ -15,7 +15,7 @@ export default function PostLayout({ data }) {
   const { body, frontmatter, tableOfContents, timeToRead } = data.mdx;
   const { date, tags, title } = frontmatter;
 
-  const subtitle = (
+  const description = (
     <FlexList flexWrap="wrap">
       <div>{date}</div>
       <div>{`${timeToRead}min`}</div>
@@ -30,7 +30,7 @@ export default function PostLayout({ data }) {
   ];
 
   return (
-    <PageLayout actions={actions} subtitle={subtitle} title={title}>
+    <PageLayout actions={actions} description={description} title={title}>
       <MDXRenderer>{body}</MDXRenderer>
       <Modal onDismiss={hide} shown={shown} title="Table of Contents">
         <TableOfContents contents={tableOfContents} onSelectContent={hide} />

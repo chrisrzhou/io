@@ -1,16 +1,17 @@
+import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import * as customPropTypes from 'customPropTypes';
 import { Box, Flex } from 'ui';
 
-export default function Thumbnail({ height = 300, thumbnail, onClick }) {
-  const { preview, title } = thumbnail;
+export default function Thumbnail({ height = 300, thumbnail }) {
+  const { previewImageSrc, slug, title } = thumbnail;
 
   return (
     <Box
+      as={Link}
       css={`
-        cursor: pointer;
         position: relative;
 
         .thumbnail-preview {
@@ -38,11 +39,18 @@ export default function Thumbnail({ height = 300, thumbnail, onClick }) {
           opacity: 0;
         }
       `}
-      onClick={onClick}
+      to={slug}
     >
-      <Box height={height} className="thumbnail-preview">
-        {preview}
-      </Box>
+      <Box
+        as="img"
+        className="thumbnail-preview"
+        css={`
+          object-fit: cover;
+        `}
+        src={previewImageSrc}
+        height={height}
+        width="100%"
+      />
       <Flex
         alignItems="center"
         className="thumbnail-title"
@@ -57,6 +65,5 @@ export default function Thumbnail({ height = 300, thumbnail, onClick }) {
 
 Thumbnail.propTypes = {
   height: PropTypes.number,
-  onClick: PropTypes.func.isRequired,
   thumbnail: customPropTypes.thumbnail.isRequired,
 };

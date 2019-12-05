@@ -49,9 +49,10 @@ exports.onCreateNode = ({ actions, node, getNode }) => {
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
+
   const allPosts = await graphql(`
     query allPosts {
-      allMdx {
+      allMdx(filter: { fields: { sourceInstanceName: { eq: "posts" } } }) {
         edges {
           node {
             id
@@ -73,6 +74,62 @@ exports.createPages = async ({ actions, graphql }) => {
       context: {
         id,
         sourceInstanceName,
+      },
+    });
+  });
+
+  const allDrawings = await graphql(`
+    query allDrawings {
+      allImageSharp(filter: { fields: { sourceInstanceName: { eq: "art" } } }) {
+        edges {
+          node {
+            id
+            fields {
+              sourceInstanceName
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+  allDrawings.data.allImageSharp.edges.forEach(({ node }) => {
+    const { fields, id } = node;
+    const { slug, sourceInstanceName } = fields;
+    createPage({
+      path: slug,
+      component: path.resolve(`src/layouts/ArtLayout.jsx`),
+      context: {
+        id,
+        sourceInstanceName,
+      },
+    });
+  });
+
+  const allProjects = await graphql(`
+    query allProjects {
+      githubData {
+        data {
+          repos {
+            edges {
+              node {
+                id
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+  allProjects.data.githubData.data.repos.edges.map(({ node }) => {
+    const { id, name } = node;
+    createPage({
+      path: `/projects/${name}`,
+      component: path.resolve(`src/layouts/ProjectLayout.jsx`),
+      context: {
+        id,
+        sourceInstanceName: 'projects',
       },
     });
   });

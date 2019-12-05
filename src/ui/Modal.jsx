@@ -9,12 +9,12 @@ import Icon from './Icon';
 
 export default function Modal({
   children,
-  isFullViewport = false,
+  description,
   onDismiss,
   shown,
-  subtitle,
   title,
 }) {
+  // prevent document from scrolling when modal is shown
   useEffect(() => {
     if (shown) {
       document.body.className = 'no-scroll';
@@ -26,20 +26,6 @@ export default function Modal({
 
   if (!shown) {
     return null;
-  }
-
-  const modalContainerProps = {
-    bg: 'background',
-    css: `
-      animation: 0.5s grow, 0.5s fade-in;
-      border: 1px solid var(--color-primary);
-    `,
-    onClick: e => e.stopPropagation(),
-  };
-
-  if (isFullViewport) {
-    modalContainerProps.height = '100vh';
-    modalContainerProps.width = '100vw';
   }
 
   return (
@@ -56,11 +42,18 @@ export default function Modal({
       `}
       onClick={onDismiss}
     >
-      <Container {...modalContainerProps}>
+      <Container
+        bg="background"
+        css={`
+          animation: 0.3s grow, 0.5s fade-in;
+          border: 1px solid var(--color-primary);
+        `}
+        onClick={e => e.stopPropagation()}
+      >
         <Flex
           flexDirection="column"
-          height="100%"
-          maxHeight={isFullViewport ? '100vh' : ['100vh', '70vh']}
+          height={['100vh', '100%']}
+          maxHeight={['100vh', '70vh']}
           pb={4}
           pt={3}
         >
@@ -69,7 +62,7 @@ export default function Modal({
               <h2 className="truncate">{title}</h2>
               <Icon as="a" icon="close" onClick={onDismiss} title="close" />
             </Flex>
-            {subtitle && <InfoText flexShrink={0}>{subtitle}</InfoText>}
+            {description && <InfoText flexShrink={0}>{description}</InfoText>}
           </Box>
           <Box flexGrow={1} overflow="auto">
             {children}
@@ -82,9 +75,8 @@ export default function Modal({
 
 Modal.propTypes = {
   children: PropTypes.node.isRequired,
-  isFullViewport: PropTypes.bool,
+  description: PropTypes.node,
   onDismiss: PropTypes.func.isRequired,
   shown: PropTypes.bool.isRequired,
-  subtitle: PropTypes.node,
   title: PropTypes.string.isRequired,
 };
