@@ -5,6 +5,10 @@ import * as customPropTypes from 'customPropTypes';
 import { Flex, Icon } from 'ui';
 
 export default function Actions({ actions }) {
+  if (!actions) {
+    return null;
+  }
+
   return (
     <Flex
       css={`

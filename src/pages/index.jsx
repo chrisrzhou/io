@@ -9,7 +9,7 @@ export default function IndexPage() {
       description="A digital imprint of myself on the web."
       title=".io"
     >
-      <Flex alignItems="center" height="60vh" justifyContent="center">
+      <Flex alignItems="center" flexGrow={1} justifyContent="center" mt="-10vh">
         <blockquote>
           What I cannot create, I do not understand.
           <cite>Richard Feynman</cite>

@@ -25,9 +25,9 @@ export default function PostLayout({ data }) {
     </FlexList>
   );
 
-  const actions = tableOfContents.items && [
-    { icon: 'book', onClick: show, title: 'Table of contents' },
-  ];
+  const actions = tableOfContents.items
+    ? [{ icon: 'book', onClick: show, title: 'Table of contents' }]
+    : undefined;
 
   return (
     <PageLayout actions={actions} description={description} title={title}>

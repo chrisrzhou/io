@@ -33,9 +33,15 @@ export default function WithTagsLayout({ entries, renderEntry, title }) {
   const { pathname, search } = globalHistory.location;
   const appliedTagValue = new URLSearchParams(search).get(TAG_SEARCH_PARAM);
 
+  const tags = getTags(entries, pathname);
   const filteredEntries = entries.filter(entry => {
     return !appliedTagValue || entry.tags.includes(appliedTagValue);
   });
+
+  const actions =
+    tags.length > 0
+      ? [{ icon: 'hash', onClick: show, title: 'Tags' }]
+      : undefined;
 
   const description = (
     <>
@@ -49,12 +55,6 @@ export default function WithTagsLayout({ entries, renderEntry, title }) {
       )}
     </>
   );
-
-  const tags = getTags(entries, pathname);
-  let actions = [];
-  if (tags.length > 0) {
-    actions = [{ icon: 'hash', onClick: show, title: 'Tags' }];
-  }
 
   return (
     <PageLayout actions={actions} description={description} title={title}>

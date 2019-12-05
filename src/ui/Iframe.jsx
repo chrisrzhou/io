@@ -23,9 +23,8 @@ export default function Iframe({
         }
       `}
       flexGrow={1}
-      height="100%"
+      height={0}
       overflow="hidden"
-      width="100%"
     >
       <Box
         as="iframe"
