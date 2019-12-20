@@ -4,7 +4,7 @@ import React from 'react';
 import { FlexList, InfoText, Tag } from 'ui';
 
 export default function TagsSummary({
-  direction = 'column',
+  direction = 'row',
   onSelectTag,
   pathname,
   tags,
@@ -32,7 +32,7 @@ export default function TagsSummary({
 
 TagsSummary.propTypes = {
   direction: PropTypes.oneOf(['column', 'row']),
-  onSelectTag: PropTypes.func.isRequired,
+  onSelectTag: PropTypes.func,
   pathname: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(
     PropTypes.shape({

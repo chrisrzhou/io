@@ -65,6 +65,12 @@ h5,
 h6 {
   margin: 0;
 }
+h1[id] {
+  padding-top: var(--space-xl);
+}
+h2[id] {
+  padding-top: var(--space-l);
+}
 
 a {
   color: var(--color-primary);

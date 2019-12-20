@@ -57,7 +57,7 @@ export default function WithTagsLayout({ entries, renderEntry, title }) {
       </FlexList>
       <Modal onDismiss={hide} shown={shown} title="Tags">
         <TagsSummary
-          flexDirection="column"
+          direction="column"
           onSelectTag={hide}
           pathname={pathname}
           tags={tags}
