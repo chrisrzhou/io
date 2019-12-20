@@ -16,6 +16,6 @@ export function getGithubLink(resource = '') {
 }
 
 export function getGithubSourceLink(fileAbsolutePath = '') {
-  const fileRelativePath = fileAbsolutePath.replace(/^(.*\/io)\/data/, '');
+  const fileRelativePath = fileAbsolutePath.replace(/^.*\/(io|repo)\/data/, '')
   return `${getGithubLink('/io/tree/master/data')}${fileRelativePath}`;
 }
