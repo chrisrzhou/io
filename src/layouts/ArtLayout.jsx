@@ -4,12 +4,17 @@ import React from 'react';
 import Image from 'gatsby-image';
 
 import PageLayout from './PageLayout';
+import { getGithubSourceLink } from 'routes';
 
-export default function ArtLayout({ data }) {
+export default function ArtLayout({ data, pageContext }) {
   const { fields, fluid } = data.imageSharp;
 
   return (
-    <PageLayout description={fields.exif.date} title={fluid.originalName}>
+    <PageLayout
+      description={fields.exif.date}
+      source={getGithubSourceLink(pageContext.fileAbsolutePath)}
+      title={fluid.originalName}
+    >
       <Image fluid={fluid} />
     </PageLayout>
   );
@@ -19,6 +24,7 @@ ArtLayout.propTypes = {
   data: PropTypes.shape({
     imageSharp: PropTypes.object.isRequired,
   }).isRequired,
+  pageContext: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`

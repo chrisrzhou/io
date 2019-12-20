@@ -13,6 +13,7 @@ export default function PageLayout({
   actions = [],
   children,
   description,
+  source,
   title,
 }) {
   // force-scroll to hash if it exists
@@ -36,7 +37,7 @@ export default function PageLayout({
         >
           <Header />
           <Flex as="main" flexDirection="column" flexGrow={1} pb={5} pt={2}>
-            <Actions actions={actions} />
+            <Actions actions={actions} source={source} />
             <Box flexShrink={0}>
               <h1>{title}</h1>
               <InfoText pb={4}>{description}</InfoText>
@@ -54,5 +55,6 @@ PageLayout.propTypes = {
   actions: PropTypes.arrayOf(customPropTypes.action.isRequired),
   children: PropTypes.node.isRequired,
   description: PropTypes.node,
+  source: PropTypes.string,
   title: PropTypes.string.isRequired,
 };

@@ -9,7 +9,7 @@ import { useToggle } from 'hooks';
 import * as routes from 'routes';
 import { FlexList, Modal, Tag } from 'ui';
 
-export default function PostLayout({ data }) {
+export default function PostLayout({ data, pageContext }) {
   const [shown, show, hide] = useToggle(false);
 
   const { body, frontmatter, tableOfContents, timeToRead } = data.mdx;
@@ -30,7 +30,12 @@ export default function PostLayout({ data }) {
     : undefined;
 
   return (
-    <PageLayout actions={actions} description={description} title={title}>
+    <PageLayout
+      actions={actions}
+      description={description}
+      source={routes.getGithubSourceLink(pageContext.fileAbsolutePath)}
+      title={title}
+    >
       <MDXRenderer>{body}</MDXRenderer>
       <Modal onDismiss={hide} shown={shown} title="Table of Contents">
         <TableOfContents contents={tableOfContents} onSelectContent={hide} />
@@ -43,6 +48,7 @@ PostLayout.propTypes = {
   data: PropTypes.shape({
     mdx: PropTypes.object.isRequired,
   }).isRequired,
+  pageContext: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`

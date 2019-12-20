@@ -60,19 +60,26 @@ exports.createPages = async ({ actions, graphql }) => {
               slug
               sourceInstanceName
             }
+            parent {
+              ... on File {
+                absolutePath
+              }
+            }
           }
         }
       }
     }
   `);
   allPosts.data.allMdx.edges.forEach(({ node }) => {
-    const { fields, id } = node;
+    const { id, fields, parent } = node;
     const { slug, sourceInstanceName } = fields;
+    const fileAbsolutePath = parent.absolutePath;
     createPage({
       path: slug,
       component: path.resolve(`src/layouts/PostLayout.jsx`),
       context: {
         id,
+        fileAbsolutePath,
         sourceInstanceName,
       },
     });
@@ -88,19 +95,26 @@ exports.createPages = async ({ actions, graphql }) => {
               slug
               sourceInstanceName
             }
+            parent {
+              ... on File {
+                absolutePath
+              }
+            }
           }
         }
       }
     }
   `);
   allCtfs.data.allMdx.edges.forEach(({ node }) => {
-    const { fields, id } = node;
+    const { id, fields, parent } = node;
     const { slug, sourceInstanceName } = fields;
+    const fileAbsolutePath = parent.absolutePath;
     createPage({
       path: slug,
       component: path.resolve(`src/layouts/CtfLayout.jsx`),
       context: {
         id,
+        fileAbsolutePath,
         sourceInstanceName,
       },
     });
@@ -116,19 +130,26 @@ exports.createPages = async ({ actions, graphql }) => {
               sourceInstanceName
               slug
             }
+            parent {
+              ... on File {
+                absolutePath
+              }
+            }
           }
         }
       }
     }
   `);
   allDrawings.data.allImageSharp.edges.forEach(({ node }) => {
-    const { fields, id } = node;
+    const { id, fields, parent } = node;
     const { slug, sourceInstanceName } = fields;
+    const fileAbsolutePath = parent.absolutePath;
     createPage({
       path: slug,
       component: path.resolve(`src/layouts/ArtLayout.jsx`),
       context: {
         id,
+        fileAbsolutePath,
         sourceInstanceName,
       },
     });

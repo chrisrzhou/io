@@ -4,8 +4,18 @@ import React from 'react';
 import * as customPropTypes from 'customPropTypes';
 import { Flex, Icon } from 'ui';
 
-export default function Actions({ actions }) {
-  if (!actions) {
+export default function Actions({ actions = [], source }) {
+  const mergedActions = [...actions];
+
+  if (source) {
+    mergedActions.push({
+      href: source,
+      icon: 'code',
+      title: 'source',
+    });
+  }
+
+  if (mergedActions.length === 0) {
     return null;
   }
 
@@ -19,9 +29,10 @@ export default function Actions({ actions }) {
       `}
       flexDirection="column"
     >
-      {actions.map(({ icon, onClick, title }) => (
+      {mergedActions.map(({ href, icon, onClick, title }) => (
         <Icon
           as="a"
+          href={href}
           icon={icon}
           isInverted
           key={icon}
@@ -35,4 +46,5 @@ export default function Actions({ actions }) {
 
 Actions.propTypes = {
   actions: PropTypes.arrayOf(customPropTypes.action.isRequired),
+  source: PropTypes.string,
 };

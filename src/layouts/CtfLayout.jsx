@@ -8,13 +8,13 @@ import PageLayout from './PageLayout';
 import TagsSummary from 'components/TagsSummary';
 import TableOfContents from 'components/TableOfContents';
 import { useToggle } from 'hooks';
-import { TAG_SEARCH_PARAM, searchTag } from 'routes';
+import { TAG_SEARCH_PARAM, getGithubSourceLink, searchTag } from 'routes';
 import { Modal, Tag } from 'ui';
 import { parseTags, pluralize, summarizeTags } from 'utils';
 
 const DATA_TAGS_ATTRIBUTE = 'data-tags';
 
-export default function CtfLayout({ data }) {
+export default function CtfLayout({ data, pageContext }) {
   const bodyRef = useRef();
   const [entriesCount, setEntriesCount] = useState();
   const [shown, show, hide] = useToggle(false);
@@ -106,8 +106,8 @@ export default function CtfLayout({ data }) {
   const description = appliedTagValue ? (
     <div>
       {pluralize('entry', entriesCount)} found for{' '}
-      <Tag pathname={pathname} value={appliedTagValue} /> (
-      <a onClick={clearTags}>clear</a>)
+      <Tag pathname={pathname} value={appliedTagValue} />{' '}
+      <a onClick={clearTags}>[clear]</a>
     </div>
   ) : (
     <TagsSummary pathname={pathname} tags={tags} />
@@ -118,7 +118,12 @@ export default function CtfLayout({ data }) {
     : undefined;
 
   return (
-    <PageLayout actions={actions} description={description} title={title}>
+    <PageLayout
+      actions={actions}
+      description={description}
+      source={getGithubSourceLink(pageContext.fileAbsolutePath)}
+      title={title}
+    >
       <div ref={bodyRef}>
         <MDXRenderer>{body}</MDXRenderer>
       </div>
@@ -136,6 +141,7 @@ CtfLayout.propTypes = {
   data: PropTypes.shape({
     mdx: PropTypes.object.isRequired,
   }).isRequired,
+  pageContext: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`

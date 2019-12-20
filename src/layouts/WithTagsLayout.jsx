@@ -41,8 +41,8 @@ export default function WithTagsLayout({ entries, renderEntry, title }) {
       {appliedTagValue && (
         <>
           {' '}
-          for <Tag pathname={pathname} value={appliedTagValue} /> (
-          <a onClick={() => navigate(pathname)}>clear</a>)
+          for <Tag pathname={pathname} value={appliedTagValue} />{' '}
+          <a onClick={() => navigate(pathname)}>[clear]</a>
         </>
       )}
     </>

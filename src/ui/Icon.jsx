@@ -11,6 +11,12 @@ const PATHS = {
       <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
     </>
   ),
+  code: (
+    <>
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+    </>
+  ),
   close: (
     <>
       <line x1="18" y1="6" x2="6" y2="18" />

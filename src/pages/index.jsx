@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PageLayout from 'layouts/PageLayout';
+import { getGithubSourceLink } from 'routes';
 import { Flex } from 'ui';
 
 export default function IndexPage() {
@@ -11,9 +12,8 @@ export default function IndexPage() {
     >
       <Flex alignItems="center" flexGrow={1} justifyContent="center" mt="-10vh">
         <blockquote>
-          What{' '}
-          <a href="https://github.com/chrisrzhou/io/tree/master/data">data</a> I
-          cannot render, I do not understand.
+          What <a href={getGithubSourceLink()}>data</a> I cannot render, I do
+          not understand.
         </blockquote>
       </Flex>
     </PageLayout>

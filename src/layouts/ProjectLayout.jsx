@@ -48,7 +48,11 @@ export default function ProjectLayout({ data, pageContext }) {
   );
 
   return (
-    <PageLayout description={description} title={name}>
+    <PageLayout
+      description={description}
+      source={routes.getGithubLink(name)}
+      title={name}
+    >
       <Iframe src={homepageUrl} />
     </PageLayout>
   );
