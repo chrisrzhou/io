@@ -6,8 +6,8 @@ import { FlexList } from 'ui';
 
 const links = [
   { label: 'Projects', to: routes.PROJECTS },
-  { label: 'Posts', to: routes.POSTS },
   { label: 'CTF', to: routes.CTF },
+  { label: 'Posts', to: routes.POSTS },
   { label: 'Art', to: routes.ART },
   { label: 'About', to: routes.ABOUT },
 ];

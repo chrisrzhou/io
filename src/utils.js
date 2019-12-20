@@ -13,8 +13,8 @@ export function pluralize(word, count) {
 
 // parse an array of tags from an input string
 export function parseTags(inputString) {
-  const matches = Array.from(inputString.matchAll(/#(\S+)/g));
-  return matches.map(match => match[1]);
+  const matches = inputString.match(/#\S+/g) || [];
+  return matches.map(match => match.replace(/^#/, ''));
 }
 
 // summarize and count an array of tags with provided pathname
