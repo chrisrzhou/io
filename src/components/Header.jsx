@@ -31,7 +31,7 @@ export default function Header() {
       as="header"
       bg="background"
       css={`
-        min-height: 32px;
+        height: var(--header-height);
         position: sticky;
         top: 0;
         z-index: var(--z-index-header);

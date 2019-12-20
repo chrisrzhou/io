@@ -31,6 +31,8 @@
   --z-index-base: 1;
   --z-index-header: 2;
   --z-index-modal: 4;
+
+  --header-height: 30px;
 }
 
 body {
@@ -43,6 +45,10 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 0;
+}
+
+html {
+  scroll-padding-top: var(--header-height);
 }
 
 * {

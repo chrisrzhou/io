@@ -1,13 +1,12 @@
 import { globalHistory } from '@reach/router';
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
 import WithTagsLayout from './WithTagsLayout';
-import { Flex, FlexList, InfoText, Tag, TypeText } from 'ui';
+import { Box, Flex, FlexList, InfoText, Tag } from 'ui';
 
-export default function PostListLayout({ data, title }) {
-  const [activePostId, setActivePostId] = useState();
+export default function EntriesLayout({ data, title }) {
   const { edges } = data.allMdx;
   const { pathname } = globalHistory.location;
 
@@ -32,46 +31,19 @@ export default function PostListLayout({ data, title }) {
   function renderEntry(entry) {
     const { date, excerpt, fields, id, tags, timeToRead, title } = entry;
     return (
-      <FlexList
-        css={`
-          position: relative;
-        `}
-        flexDirection="column"
-        key={id}
-        onMouseEnter={() => setActivePostId(id)}
-        onMouseLeave={() => setActivePostId()}
-        spacing={0}
-      >
+      <Flex flexDirection="column" key={id}>
         <Link to={fields.slug}>
           <h2>{title}</h2>
         </Link>
         <FlexList flexWrap="wrap" pb={2}>
-          <InfoText>{date}</InfoText>
-          <InfoText>{`${timeToRead}min`}</InfoText>
+          {date && <InfoText>{date}</InfoText>}
+          {timeToRead && <InfoText>{`${timeToRead}min`}</InfoText>}
           {tags.map(tag => (
             <Tag key={tag} pathname={pathname} value={tag} />
           ))}
         </FlexList>
-        {activePostId === id && (
-          <Flex
-            alignItems="center"
-            as={Link}
-            bg="backgroundAlpha"
-            color="gray2"
-            css={`
-              bottom: 0;
-              left: 0;
-              position: absolute;
-              right: 0;
-              top: 0;
-            `}
-            fontFamily="serif"
-            to={fields.slug}
-          >
-            <TypeText delay={5} text={excerpt} />
-          </Flex>
-        )}
-      </FlexList>
+        {excerpt && <Box fontFamily="serif">{excerpt}</Box>}
+      </Flex>
     );
   }
 
@@ -80,7 +52,7 @@ export default function PostListLayout({ data, title }) {
   );
 }
 
-PostListLayout.propTypes = {
+EntriesLayout.propTypes = {
   data: PropTypes.shape({
     allMdx: PropTypes.object.isRequired,
   }).isRequired,

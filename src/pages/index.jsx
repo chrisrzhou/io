@@ -11,8 +11,9 @@ export default function IndexPage() {
     >
       <Flex alignItems="center" flexGrow={1} justifyContent="center" mt="-10vh">
         <blockquote>
-          What I cannot create, I do not understand.
-          <cite>Richard Feynman</cite>
+          What{' '}
+          <a href="https://github.com/chrisrzhou/io/tree/master/data">data</a> I
+          cannot render, I do not understand.
         </blockquote>
       </Flex>
     </PageLayout>

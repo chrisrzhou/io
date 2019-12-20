@@ -78,6 +78,34 @@ exports.createPages = async ({ actions, graphql }) => {
     });
   });
 
+  const allCtfs = await graphql(`
+    query allCtfs {
+      allMdx(filter: { fields: { sourceInstanceName: { eq: "ctf" } } }) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+              sourceInstanceName
+            }
+          }
+        }
+      }
+    }
+  `);
+  allCtfs.data.allMdx.edges.forEach(({ node }) => {
+    const { fields, id } = node;
+    const { slug, sourceInstanceName } = fields;
+    createPage({
+      path: slug,
+      component: path.resolve(`src/layouts/CtfLayout.jsx`),
+      context: {
+        id,
+        sourceInstanceName,
+      },
+    });
+  });
+
   const allDrawings = await graphql(`
     query allDrawings {
       allImageSharp(filter: { fields: { sourceInstanceName: { eq: "art" } } }) {

@@ -2,29 +2,21 @@ import { globalHistory, navigate } from '@reach/router';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Tags from 'components/Tags';
+import TagsSummary from 'components/TagsSummary';
 import PageLayout from './PageLayout';
 import { TAG_SEARCH_PARAM } from 'enums';
 import { useToggle } from 'hooks';
 import { FlexList, Modal, Tag } from 'ui';
-import { pluralize } from 'utils';
+import { summarizeTags, pluralize } from 'utils';
 
-function getTags(entries, pathname) {
-  const tagsMap = entries.reduce((tagsCount, entry) => {
+function getTags(entries) {
+  const tags = [];
+  entries.forEach(entry => {
     entry.tags.forEach(tag => {
-      if (!tagsCount[tag]) {
-        tagsCount[tag] = 0;
-      }
-      tagsCount[tag] += 1;
+      tags.push(tag);
     });
-    return tagsCount;
-  }, {});
-
-  return Object.keys(tagsMap).map(tag => ({
-    count: tagsMap[tag],
-    pathname,
-    value: tag,
-  }));
+  });
+  return summarizeTags(tags);
 }
 
 export default function WithTagsLayout({ entries, renderEntry, title }) {
@@ -33,7 +25,7 @@ export default function WithTagsLayout({ entries, renderEntry, title }) {
   const { pathname, search } = globalHistory.location;
   const appliedTagValue = new URLSearchParams(search).get(TAG_SEARCH_PARAM);
 
-  const tags = getTags(entries, pathname);
+  const tags = getTags(entries);
   const filteredEntries = entries.filter(entry => {
     return !appliedTagValue || entry.tags.includes(appliedTagValue);
   });
@@ -64,7 +56,12 @@ export default function WithTagsLayout({ entries, renderEntry, title }) {
         ))}
       </FlexList>
       <Modal onDismiss={hide} shown={shown} title="Tags">
-        <Tags flexDirection="column" onSelectTag={hide} tags={tags} />
+        <TagsSummary
+          flexDirection="column"
+          onSelectTag={hide}
+          pathname={pathname}
+          tags={tags}
+        />
       </Modal>
     </PageLayout>
   );

@@ -4,34 +4,27 @@ import React from 'react';
 
 import EntriesLayout from 'layouts/EntriesLayout';
 
-export default function PostsPage({ data }) {
-  return <EntriesLayout data={data} title="Posts" />;
+export default function CtfPage({ data }) {
+  return <EntriesLayout data={data} title="CTF" />;
 }
 
-PostsPage.propTypes = {
+CtfPage.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
-  query allPosts {
-    allMdx(
-      filter: { fields: { sourceInstanceName: { eq: "posts" } } }
-      sort: { order: DESC, fields: [frontmatter___date] }
-    ) {
+  query allCtfs {
+    allMdx(filter: { fields: { sourceInstanceName: { eq: "ctf" } } }) {
       edges {
         node {
           id
-          excerpt
           fields {
             slug
           }
           frontmatter {
-            date(formatString: "YYYY-MM-DD")
-            isbn
             tags
             title
           }
-          timeToRead
         }
       }
     }
