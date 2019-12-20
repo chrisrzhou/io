@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 import TagsSummary from 'components/TagsSummary';
 import PageLayout from './PageLayout';
-import { TAG_SEARCH_PARAM } from 'enums';
 import { useToggle } from 'hooks';
+import { TAG_SEARCH_PARAM } from 'routes';
 import { FlexList, Modal, Tag } from 'ui';
 import { summarizeTags, pluralize } from 'utils';
 

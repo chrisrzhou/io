@@ -2,23 +2,16 @@ import { navigate } from '@reach/router';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { TAG_SEARCH_PARAM } from 'enums';
 import Box from './Box';
+import { searchTag } from 'routes';
 
-export default function Tag({
-  count,
-  onClick,
-  pathname,
-  value: originalValue,
-  ...rest
-}) {
-  const value = originalValue.replace(/^#/, '');
+export default function Tag({ count, onClick, pathname, value, ...rest }) {
   return (
     <Box
       as="a"
       fontSize="s"
       onClick={() => {
-        navigate(`${pathname}?${TAG_SEARCH_PARAM}=${value}`);
+        navigate(searchTag(pathname, value));
         onClick && onClick();
       }}
       {...rest}

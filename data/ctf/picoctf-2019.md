@@ -7,23 +7,27 @@ tags: [picoCTF, "2019"]
 
 https://2019game.picoctf.com/problems
 
-# [UNSOLVED] The Factory's Secret (1pt)
+# The Factory's Secret
+
+#unsolved #1pt
 
 > There appear to be some mysterious glyphs hidden inside this abandoned factory... I wonder what would happen if you collected them all?
 
-# 2Warm (50pt)
+# 2Warm
+
+#general #50pt #bc
 
 > Can you convert the number 42 (base 10) to binary (base 2)?
 >
-> `picoCTF{101010}`
+> picoCTF{101010}`
 
 ```bash
 echo "obase=2;ibase=10;42;" | bc
 ```
 
-#general #bc
+# Glory of the Garden
 
-# Glory of the Garden (50pt)
+#forensics #50pt #strings #grep
 
 > This garden contains more than it seems. You can also find the file in /problems/glory-of-the-garden_4_cf9f4aaf458caf5268f8cf0a6465eb98 on the shell server.
 >
@@ -35,9 +39,9 @@ No information in the image. Check the string contents.
 strings garden.jpg | grep picoCTF{
 ```
 
-#forensics #strings #grep
+# Insp3ct0r
 
-# Insp3ct0r (50pt)
+#web-exploits #50pt #curl #grep
 
 > Kishor Balan tipped us off that the following code may need inspection: https://2019shell1.picoctf.com/problem/61676/ (link) or http://2019shell1.picoctf.com:61676
 >
@@ -52,9 +56,9 @@ curl https://2019shell1.picoctf.com/problem/61676/mycss.css | grep flag
 curl https://2019shell1.picoctf.com/problem/61676/myjs.js | grep flag
 ```
 
-#web-exploits #curl #grep
+# Lets Warm Up
 
-# Lets Warm Up (50pt)
+#general #50pt #ascii #bc
 
 > If I told you a word started with 0x70 in hexadecimal, what would it start with in ASCII?
 >
@@ -67,9 +71,9 @@ echo "obase=128;ibase=16;70" | bc  # decimal value '112'
 man ascii  # lookup in ascii decimal table
 ```
 
-#general #ascii #bc
+# The Numbers
 
-# The Numbers (50pt)
+#cryptography #50pt #a1z26
 
 > The numbers... what do they mean?
 >
@@ -91,9 +95,9 @@ function decodeA1Z26(ciphertext, alphabet = "abcdefghijklmnopqrstuvwxyz") {
 }
 ```
 
-#cryptography #a1z26
+# Warmed Up
 
-# Warmed Up (50pt)
+#general #50pt #bc
 
 > What is 0x3D (base 16) in decimal (base 10).
 >
@@ -103,13 +107,15 @@ function decodeA1Z26(ciphertext, alphabet = "abcdefghijklmnopqrstuvwxyz") {
 echo "obase=10;ibase=16;3D" | bc
 ```
 
-#general #bc
+# handy-shellcode
 
-# [UNSOLVED] handy-shellcode (50pt)
+#unsolved #50pt
 
 > This program executes any shellcode that you give it. Can you spawn a shell and use that to read the flag.txt? You can find the program in /problems/handy-shellcode_4_037bd47611d842b565cfa1f378bfd8d9 on the shell server. Source.
 
-# practice-run-1 (50pt)
+# practice-run-1
+
+#binary-exploits #50pt
 
 > You're going to need to know how to run programs if you're going to get out of here. Navigate to /problems/practice-run-1_0_62b61488e896645ebff9b6c97d0e775e on the shell server and run this program to receive a flag.
 >
@@ -119,9 +125,9 @@ echo "obase=10;ibase=16;3D" | bc
 ./run_this  # only in linux/unix
 ```
 
-#binary-exploits
+# unzip
 
-# unzip (50pt)
+#forensics #50pt #unzip
 
 > Can you unzip this file and get the flag?
 >
@@ -132,9 +138,9 @@ unzip flag.zip
 # open image file
 ```
 
-#forensics #unzip
+# vault-door-training
 
-# vault-door-training (50pt)
+#reverse-engineering #50pt
 
 > Your mission is to enter Dr. Evil's laboratory and retrieve the blueprints for his Doomsday Project. The laboratory is protected by a series of locked vault doors. Each door is controlled by a computer and requires a password to open. Unfortunately, our undercover agents have not been able to obtain the secret passwords for the vault doors, but one of our junior agents obtained the source code for each vault's computer! You will need to read the source code for each level to figure out what the password is for that vault door. As a warmup, we have created a replica vault in our training facility. The source code for the training vault is here: VaultDoorTraining.java
 >
@@ -142,9 +148,9 @@ unzip flag.zip
 
 Read the source code to obtain the password.
 
-#reverse-engineering
+# 13
 
-# 13 (100pt)
+#cryptography #100pt #rot13
 
 > Cryptography can be easy, do you know what ROT13 is? `cvpbPGS{abg_gbb_onq_bs_n_ceboyrz}`
 >
@@ -170,9 +176,9 @@ function decodeCaesar(
 }
 ```
 
-#cryptography #rot13
+# Bases
 
-# Bases (100pt)
+#general #100pt #openssl #base64
 
 > What does this `bDNhcm5fdGgzX3IwcDM1` mean? I think it has something to do with bases.
 >
@@ -184,9 +190,9 @@ Try decoding base-64 with `openssl`
 echo "bDNhcm5fdGgzX3IwcDM1" | openssl base64 -d
 ```
 
-#general #openssl #base64
+# Easy1
 
-# Easy1 (100pt)
+#cryptography #one-time-pad
 
 > The one time pad can be cryptographically secure, but not when you know the key. Can you solve this? We've given you the encrypted flag, key, and a table to help `UFJKXQZQUNB` with the key of `SOLVECRYPTO`. Can you use this table to solve it?.
 >
@@ -225,9 +231,9 @@ Y | Y Z A B C D E F G H I J K L M N O P Q R S T U V W X
 Z | Z A B C D E F G H I J K L M N O P Q R S T U V W X Y
 ```
 
-#cryptography #one-time-pad
+# First Grep
 
-# First Grep (100pt)
+#general #100pt #grep
 
 > Can you find the flag in file? This would be really tedious to look through manually, something tells me there is a better way. You can also find the file in /problems/first-grep_0_93be1631acf1a93b98cdcc3e7b9fdc52 on the shell server.
 >
@@ -237,13 +243,15 @@ Z | Z A B C D E F G H I J K L M N O P Q R S T U V W X Y
 grep picoCTF{ file
 ```
 
-#general #grep
+# Overflow 0
 
-# [UNSOLVED] Overflow 0 (100pt)
+#unsolved #100pt
 
 > This should be easy. Overflow the correct buffer in this program and get a flag. Its also found in /problems/overflow-0_4_e130f4df1710865981d50f778a8059f7 on the shell server. Source.
 
-# Resources (100pt)
+# Resources
+
+#general #100pt #grep
 
 > We put together a bunch of resources to help you out on our website! If you go over there, you might even find a flag! https://picoctf.com/resources (link)
 >
@@ -253,9 +261,9 @@ grep picoCTF{ file
 curl https://picoctf.com/resources | grep picoCTF{
 ```
 
-#general #grep
+# caesar
 
-# caesar (100pt)
+#cryptography #100pt #caesar-cipher #brute-force
 
 > Decrypt this message (`picoCTF{jyvzzpunaolybipjvunfzpthre}`). You can find the ciphertext in /problems/caesar_0_22aa542fadadcc37b6ec6037c493ec9f on the shell server.
 >
@@ -272,9 +280,9 @@ function decrypt(ciphertext) {
 }
 ```
 
-#cryptography #caesar-cipher #brute-force
+# dont-use-client-side
 
-# dont-use-client-side (100pt)
+#web-exploits #100pt #curl
 
 > Can you break into this super secure portal? https://2019shell1.picoctf.com/problem/12280/ (link) or http://2019shell1.picoctf.com:12280
 >
@@ -285,9 +293,9 @@ curl https://2019shell1.picoctf.com/problem/12280/
 # study code
 ```
 
-#web-exploits #curl
+# logon
 
-# logon (100pt)
+#web-exploits #100pt #cookies
 
 > The factory is hiding things from all of its users. Can you login as logon and find what they've been looking at? https://2019shell1.picoctf.com/problem/49907/ (link) or http://2019shell1.picoctf.co
 >
@@ -307,9 +315,9 @@ Check cookies: `password=; username=; admin=False`
 
 Since `password` and `username` don't affect the page, resend the page request by setting `admin=True` in the cookie.
 
-#web-exploits #cookies
+# vault-door-1
 
-# vault-door-1 (100pt)
+#reverse-engineering #100pt
 
 > This vault uses some complicated arrays! I hope you can make sense of it, special agent. The source code for this vault is here: VaultDoor1.java
 >
@@ -317,9 +325,9 @@ Since `password` and `username` don't affect the page, resend the page request b
 
 Read and reverse-engineer the code.
 
-#reverse-engineering
+# what's a net cat?
 
-# what's a net cat? (100pt)
+#general-skills #100pt #nc
 
 > Using netcat (nc) is going to be pretty important. Can you connect to 2019shell1.picoctf.com at port 4158 to get the flag?
 >
@@ -329,9 +337,9 @@ Read and reverse-engineer the code.
 nc 2019shell1.picoctf.com 4158
 ```
 
-#general-skills #nc
+# where are the robots
 
-# where are the robots (100pt)
+#web-exploits #100pt #robots #curl #grep
 
 > Can you find the robots? https://2019shell1.picoctf.com/problem/4159/ (link) or http://2019shell1.picoctf.com:
 >
@@ -345,9 +353,9 @@ curl https://2019shell1.picoctf.com/problem/4159/a44f7.html
 curl https://2019shell1.picoctf.com/problem/4159/a44f7.html | grep picoCTF{
 ```
 
-#web-exploits #robots #curl #grep
+# So Meta
 
-# So Meta (150pt)
+#forensics #150pt #strings #grep
 
 > Find the flag in this picture. You can also find the file in /problems/so-meta_6_8d7541b8d04bd65a01336fdb8db6db24
 >
@@ -357,8 +365,8 @@ curl https://2019shell1.picoctf.com/problem/4159/a44f7.html | grep picoCTF{
 strings pico_img.png | grep picoCTF{
 ```
 
-#forensics #strings #grep
+# What Lies Within
 
-# [UNSOLVED] What Lies Within (150pt)
+#unsolved #150pt
 
 > Theres something in the building. Can you retrieve the flag?

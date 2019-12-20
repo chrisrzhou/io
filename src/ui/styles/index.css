@@ -110,6 +110,13 @@ blockquote > cite:before {
   content: "--";
 }
 
+hr {
+  background: var(--color-gray3);
+  border: none;
+  height: 1px;
+  margin: var(--space-xl) 0;
+}
+
 code,
 pre {
   font-family: var(--font-family-monospace);
