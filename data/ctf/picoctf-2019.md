@@ -370,3 +370,58 @@ strings pico_img.png | grep picoCTF{
 #unsolved #150pt
 
 > Theres something in the building. Can you retrieve the flag?
+>
+> ``
+
+```bash
+
+```
+
+# extensions
+
+#forensics #150pt #file
+
+> This is a really weird text file TXT? Can you find the flag?
+>
+> ``
+
+```bash
+file flag.txt
+mv flag.txt flag.png  # open image file for flag
+```
+
+# shark on wire 1
+
+#unsolved #forensics #150pt
+
+> We found this packet capture. Recover the flag. You can also find the file in /problems/shark-on-wire-1_0_13d709ec13952807e477ba1b5404e620.
+>
+> ``
+
+```bash
+
+```
+
+# Based
+
+#general #200pt #ascii
+
+> To get truly 1337, you must understand different data encodings, such as hexadecimal or binary. Can you get the flag from this program to prove you are on the way to becoming 1337? Connect with nc 2019shell1.picoctf.com 31615.
+>
+> `picoCTF{learning_about_converting_values_502ff297}`
+
+Use the following python script to solve the problem for bases 2, 8, 16.
+
+```python
+def getWord(input, base):
+  chars = [chr(int(char, base)) for char in input.split(' ')]
+  return ''.join(chars)
+```
+
+# Client-side-again
+
+> Can you break into this super secure portal? https://2019shell1.picoctf.com/problem/47277/ (link) or http://2019shell1.picoctf.com:47277
+>
+> ``
+
+#web-exploits #200pt #unsolved
