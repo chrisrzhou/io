@@ -50,6 +50,7 @@
 code[class*="language-text"] {
   font-family: var(--font-family-monospace);
   font-size: var(--font-size-s);
+  overflow-wrap: break-word;
 }
 :not(pre) > code {
   background: var(--color-gray3);

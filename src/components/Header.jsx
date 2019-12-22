@@ -32,13 +32,14 @@ export default function Header() {
       bg="background"
       css={`
         height: var(--header-height);
-        position: sticky;
+        position: fixed;
         top: 0;
         z-index: var(--z-index-header);
       `}
       fontFamily="monospace"
       fontSize="s"
       py={1}
+      width="100%"
     >
       {navcrumbs.map(({ label, route }, i) => {
         return (

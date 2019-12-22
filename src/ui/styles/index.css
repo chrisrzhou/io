@@ -110,6 +110,10 @@ blockquote > cite:before {
   content: "--";
 }
 
+code {
+  font-family: var(--font-family-monospace);
+}
+
 hr {
   background: var(--color-gray3);
   border: none;
@@ -117,7 +121,6 @@ hr {
   margin: var(--space-xl) 0;
 }
 
-code,
 pre {
   font-family: var(--font-family-monospace);
 }

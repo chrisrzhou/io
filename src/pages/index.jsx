@@ -7,7 +7,7 @@ import { Flex } from 'ui';
 export default function IndexPage() {
   return (
     <PageLayout
-      description="Progressively imprinting myself digitally on the web, one commit at a time."
+      description="Imprinting myself digitally on the web, one commit at a time."
       title=".io"
     >
       <Flex alignItems="center" flexGrow={1} justifyContent="center" mt="-10vh">

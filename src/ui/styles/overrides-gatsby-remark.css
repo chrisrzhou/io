@@ -2,6 +2,7 @@ a.anchor {
   margin-left: -20px;
   opacity: 0;
   padding-right: var(--space-xs);
+  position: absolute;
 }
 h1:hover a.anchor,
 h2:hover a.anchor,
