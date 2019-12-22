@@ -33,8 +33,8 @@ exports.onCreateNode = ({ actions, node, getNode }) => {
       createCommonNodeFields({ actions, node, getNode });
       const { absolutePath } = getNode(node.parent);
       fastExif.read(absolutePath).then(exifData => {
-        if (exifData && exifData.image) {
-          const date = exifData.image.ModifyDate;
+        if (exifData && exifData.exif) {
+          const date = exifData.exif.DateTimeOriginal;
           createNodeField({
             node,
             name: `exif`,

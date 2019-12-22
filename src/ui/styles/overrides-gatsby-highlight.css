@@ -57,3 +57,16 @@ code[class*="language-text"] {
   color: var(--color-gray1);
   padding: 0 0.2rem;
 }
+
+.gatsby-highlight[data-language] {
+  position: relative;
+}
+.gatsby-highlight[data-language]::before {
+  color: var(--color-gray3);
+  content: attr(data-language);
+  font-family: var(--font-family-monospace);
+  font-size: 8px;
+  position: absolute;
+  right: var(--space-xs);
+  top: 0;
+}

@@ -1,11 +1,6 @@
 require('dotenv').config();
 
 module.exports = {
-  siteMetadata: {
-    title: 'chrisrzhou.io',
-    description: 'A digital imprint of myself on the web',
-    author: '@chrisrzhou',
-  },
   plugins: [
     {
       resolve: 'gatsby-plugin-manifest',

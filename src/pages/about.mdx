@@ -1,10 +1,13 @@
 import PageLayout from "layouts/PageLayout";
+
+import { getGithubSourceLink } from "routes";
 import { FlexList, Icon } from "ui";
 
 export default function AboutPage({ children }) {
   const description = (
     <div>
-      We are all in <code>this</code> together. Let's make it count.
+      Managing, understanding and rendering any{" "}
+      <a href={getGithubSourceLink()}>data</a>.
     </div>
   );
   return (
@@ -13,6 +16,8 @@ export default function AboutPage({ children }) {
     </PageLayout>
   );
 }
+
+[Email](mailto:chrisrzhou@pm.me) | [Github](https://github.com/chrisrzhou)
 
 ## Manifesto
 
@@ -37,7 +42,3 @@ As a hack-of-all-trades, I am unopinionated about tools and utilize what is best
 ## Influences
 
 My approach of building simple, cheap and quality interfaces are largely inspired by the following people: [@jxnblk](https://jxnblk.com/), [@ramaworks](https://rama.works/), [@mbostock](https://github.com/mbostock), [@gaearon](https://github.com/gaearon), [@xxiivv](https://xxiivv.com/).
-
-## Contact
-
-[Email](mailto:chrisrzhou@pm.me) | [Github](https://github.com/chrisrzhou)

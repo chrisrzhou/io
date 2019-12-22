@@ -2,16 +2,16 @@
   "private": true,
   "name": "chrisrzhou.io",
   "version": "0.1.0",
-  "description": "A digital imprint of myself on the web.",
+  "description": "Progressively imprinting myself digitally on the web, one commit at a time.",
   "keywords": [
     "blog",
     "data",
     "jamstack",
-    "resume",
     "static",
     "site",
     "visualization",
-    "web"
+    "web",
+    "ctf"
   ],
   "author": "Chris Zhou <chrisrzhou@pm.me>",
   "license": "MIT",
