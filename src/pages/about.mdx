@@ -1,15 +1,10 @@
 import PageLayout from "layouts/PageLayout";
 
-import { getGithubSourceLink } from "routes";
+import { getGithubLink, getGithubSourceLink } from "routes";
 import { FlexList, Icon } from "ui";
 
 export default function AboutPage({ children }) {
-  const description = (
-    <div>
-      Progressively managing, understanding and rendering any{" "}
-      <a href={getGithubSourceLink()}>data</a>.
-    </div>
-  );
+  const description = "What data I cannot render, I do not understand";
   return (
     <PageLayout description={description} title="About">
       {children}

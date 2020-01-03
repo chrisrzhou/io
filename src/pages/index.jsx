@@ -6,14 +6,12 @@ import { Flex } from 'ui';
 
 export default function IndexPage() {
   return (
-    <PageLayout
-      description="Imprinting myself digitally on the web, one commit at a time."
-      title=".io"
-    >
+    <PageLayout description="" title=".io">
       <Flex alignItems="center" flexGrow={1} justifyContent="center" mt="-10vh">
         <blockquote>
-          What <a href={getGithubSourceLink()}>data</a> I cannot render,{' '}
-          <a href={getGithubLink()}>I</a> do not understand.
+          Imprinting <a href={getGithubSourceLink()}>myself</a> digitally on the
+          web, one <a href={getGithubLink('io/commits/master')}>commit</a> at a
+          time.
         </blockquote>
       </Flex>
     </PageLayout>
