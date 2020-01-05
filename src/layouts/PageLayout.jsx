@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 import Helmet from 'react-helmet';
 
 import Actions from 'components/Actions';
-import Footer from 'components/Footer';
 import Header from 'components/Header';
 import * as customPropTypes from 'customPropTypes';
 import { Box, Container, Flex, InfoText, theme } from 'ui';
@@ -47,7 +46,6 @@ export default function PageLayout({
             </Box>
             {children}
           </Flex>
-          <Footer />
         </Flex>
       </Container>
     </ThemeProvider>

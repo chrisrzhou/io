@@ -1,9 +1,10 @@
 export const HOME = '/';
 export const ABOUT = '/about';
 export const ART = '/art';
+export const BOOKS = '/books';
 export const CTF = '/ctf';
-export const PROJECTS = '/projects';
 export const POSTS = '/posts';
+export const PROJECTS = '/projects';
 
 export const TAG_SEARCH_PARAM = 'tag';
 

@@ -4,18 +4,18 @@ import React from 'react';
 
 import EntriesLayout from 'layouts/EntriesLayout';
 
-export default function PostsPage({ data }) {
-  return <EntriesLayout data={data} title="Posts" />;
+export default function BooksPage({ data }) {
+  return <EntriesLayout data={data} title="Books" />;
 }
 
-PostsPage.propTypes = {
+BooksPage.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
-  query allPosts {
+  query allBooks {
     allMdx(
-      filter: { fields: { sourceInstanceName: { eq: "posts" } } }
+      filter: { fields: { sourceInstanceName: { eq: "books" } } }
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {
       edges {

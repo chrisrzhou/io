@@ -12,11 +12,8 @@ export default function EntriesLayout({ data, title }) {
 
   const entries = edges.map(({ node }) => {
     const { excerpt, fields, frontmatter, id, timeToRead } = node;
-    const { date, isbn, title } = frontmatter;
+    const { date, title } = frontmatter;
     let tags = frontmatter.tags || [];
-    if (isbn) {
-      tags = ['reading', ...tags];
-    }
     return {
       date,
       id,

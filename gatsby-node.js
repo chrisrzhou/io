@@ -85,6 +85,41 @@ exports.createPages = async ({ actions, graphql }) => {
     });
   });
 
+  const allBooks = await graphql(`
+    query allBooks {
+      allMdx(filter: { fields: { sourceInstanceName: { eq: "books" } } }) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+              sourceInstanceName
+            }
+            parent {
+              ... on File {
+                absolutePath
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+  allBooks.data.allMdx.edges.forEach(({ node }) => {
+    const { id, fields, parent } = node;
+    const { slug, sourceInstanceName } = fields;
+    const fileAbsolutePath = parent.absolutePath;
+    createPage({
+      path: slug,
+      component: path.resolve(`src/layouts/BookLayout.jsx`),
+      context: {
+        id,
+        fileAbsolutePath,
+        sourceInstanceName,
+      },
+    });
+  });
+
   const allCtfs = await graphql(`
     query allCtfs {
       allMdx(filter: { fields: { sourceInstanceName: { eq: "ctf" } } }) {
