@@ -2,6 +2,7 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import legacyGistsPng from 'images/legacy_gists.png';
 import GalleryLayout from 'layouts/GalleryLayout';
 
 export default function ProjectsPage({ data }) {
@@ -14,6 +15,13 @@ export default function ProjectsPage({ data }) {
       tags: repositoryTopics.edges.map(({ node }) => node.topic.name),
       title: name,
     };
+  });
+  thumbnails.push({
+    id: 'archived_gists',
+    externalUrl: 'https://bl.ocks.org/chrisrzhou',
+    previewImageSrc: legacyGistsPng,
+    tags: ['legacy', 'd3', 'visualization'],
+    title: 'Archived Gists',
   });
   return <GalleryLayout thumbnails={thumbnails} title="Projects" />;
 }

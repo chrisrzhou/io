@@ -30,11 +30,11 @@ export default function PageLayout({
         <Flex
           css={`
             animation: 0.5s fade-in;
+            min-height: 100vh;
             overflow-wrap: break-word;
+            padding-top: var(--header-height);
           `}
           flexDirection="column"
-          mt="var(--header-height)"
-          minHeight="100vh"
           overflow="hidden"
         >
           <Header />

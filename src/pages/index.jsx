@@ -25,7 +25,7 @@ export default function IndexPage() {
   );
   return (
     <PageLayout description={description} title=".io">
-      <FlexList flexDirection="column">
+      <FlexList alignItems="flex-start" flexDirection="column">
         {links.map(({ label, to }) => (
           <Link key={to} to={to}>
             <h2>{label}</h2>

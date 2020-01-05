@@ -6,11 +6,11 @@ import * as customPropTypes from 'customPropTypes';
 import { Box, Flex } from 'ui';
 
 export default function Thumbnail({ height = 300, thumbnail }) {
-  const { previewImageSrc, slug, title } = thumbnail;
+  const { externalUrl, previewImageSrc, slug, title } = thumbnail;
 
   return (
     <Box
-      as={Link}
+      as={externalUrl ? 'a' : Link}
       css={`
         position: relative;
 
@@ -39,6 +39,7 @@ export default function Thumbnail({ height = 300, thumbnail }) {
           opacity: 0;
         }
       `}
+      href={externalUrl}
       to={slug}
     >
       <Box
