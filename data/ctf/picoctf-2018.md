@@ -3,11 +3,11 @@ title: picoCTF 2018
 tags: [picoCTF, "2018"]
 ---
 
-# Overview
+## Overview
 
 https://2018game.picoctf.com/problems solved in `bash` and `js`.
 
-# Forensics Warmup 1
+## Forensics Warmup 1
 
 #forensics #50pt #unzip
 
@@ -20,7 +20,7 @@ unzip flag.zip
 # get flag in image
 ```
 
-# Forensics Warmup 2
+## Forensics Warmup 2
 
 #forensics #50pt
 
@@ -34,7 +34,7 @@ mv flag.png flag.jpeg
 # get flag in image
 ```
 
-# General Warmup 1
+## General Warmup 1
 
 #general #50pt #bc #ascii
 
@@ -46,7 +46,7 @@ mv flag.png flag.jpeg
 echo "41" | xxd -r -p
 ```
 
-# General Warmup 2
+## General Warmup 2
 
 #general #50pt #bases
 
@@ -58,7 +58,7 @@ echo "41" | xxd -r -p
 echo "obase=2; ibase=10; 27" | bc
 ```
 
-# General Warmup 3
+## General Warmup 3
 
 #general #50pt #bases
 
@@ -70,7 +70,7 @@ echo "obase=2; ibase=10; 27" | bc
 echo "obase=10; ibase=16; 3D" | bc
 ```
 
-# Resources
+## Resources
 
 #general
 
@@ -78,7 +78,7 @@ echo "obase=10; ibase=16; 3D" | bc
 >
 > `picoCTF{xiexie_ni_lai_zheli}`
 
-# Reversing Warmup 1
+## Reversing Warmup 1
 
 #reversing #50pt
 
@@ -88,7 +88,7 @@ echo "obase=10; ibase=16; 3D" | bc
 
 Simply run `./run` in the shell server
 
-# Reversing Warmup 2
+## Reversing Warmup 2
 
 #reversing #50pt #ascii
 
@@ -100,7 +100,7 @@ Simply run `./run` in the shell server
 echo "dGg0dF93NHNfczFtcEwz" | base64 -D
 ```
 
-# Crypto Warmup 1
+## Crypto Warmup 1
 
 #cryptography #75pt
 

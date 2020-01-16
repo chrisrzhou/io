@@ -1,5 +1,5 @@
 import { navigate } from '@reach/router';
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React from 'react';
 
 import Box from './Box';
@@ -23,8 +23,8 @@ export default function Tag({ count, onClick, pathname, value, ...rest }) {
 }
 
 Tag.propTypes = {
-  count: PropTypes.number,
-  onClick: PropTypes.func,
-  pathname: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  count: PT.number,
+  onClick: PT.func,
+  pathname: PT.string.isRequired,
+  value: PT.string.isRequired,
 };

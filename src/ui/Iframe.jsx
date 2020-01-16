@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React from 'react';
 
 import Box from './Box';
@@ -42,7 +42,7 @@ export default function Iframe({
 }
 
 Iframe.propTypes = {
-  loadingMessage: PropTypes.string,
-  scale: PropTypes.number,
-  src: PropTypes.string.isRequired,
+  loadingMessage: PT.string,
+  scale: PT.number,
+  src: PT.string.isRequired,
 };

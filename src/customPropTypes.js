@@ -1,16 +1,16 @@
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 
-export const action = PropTypes.shape({
-  icon: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+export const action = PT.shape({
+  icon: PT.string.isRequired,
+  onClick: PT.func.isRequired,
+  title: PT.string.isRequired,
 });
 
-export const thumbnail = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  externalUrl: PropTypes.string,
-  previewImageSrc: PropTypes.string.isRequired,
-  slug: PropTypes.string,
-  tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  title: PropTypes.string.isRequired,
+export const thumbnail = PT.shape({
+  id: PT.string.isRequired,
+  externalUrl: PT.string,
+  previewImageSrc: PT.string.isRequired,
+  slug: PT.string,
+  tags: PT.arrayOf(PT.string.isRequired).isRequired,
+  title: PT.string.isRequired,
 });

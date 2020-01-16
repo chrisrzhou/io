@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React from 'react';
 
 import legacyGistsPng from 'images/legacy_gists.png';
@@ -27,7 +27,7 @@ export default function ProjectsPage({ data }) {
 }
 
 ProjectsPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PT.object.isRequired,
 };
 
 export const pageQuery = graphql`

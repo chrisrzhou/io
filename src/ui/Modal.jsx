@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React, { useEffect } from 'react';
 
 import Box from './Box';
@@ -74,9 +74,9 @@ export default function Modal({
 }
 
 Modal.propTypes = {
-  children: PropTypes.node.isRequired,
-  description: PropTypes.node,
-  onDismiss: PropTypes.func.isRequired,
-  shown: PropTypes.bool.isRequired,
-  title: PropTypes.string.isRequired,
+  children: PT.node.isRequired,
+  description: PT.node,
+  onDismiss: PT.func.isRequired,
+  shown: PT.bool.isRequired,
+  title: PT.string.isRequired,
 };

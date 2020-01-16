@@ -1,6 +1,6 @@
 import { globalHistory, navigate } from '@reach/router';
 import React from 'react';
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 
 import TagsSummary from 'components/TagsSummary';
 import PageLayout from './PageLayout';
@@ -68,12 +68,12 @@ export default function WithTagsLayout({ entries, renderEntry, title }) {
 }
 
 WithTagsLayout.propTypes = {
-  entries: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  entries: PT.arrayOf(
+    PT.shape({
+      id: PT.string.isRequired,
+      tags: PT.arrayOf(PT.string.isRequired).isRequired,
     }).isRequired,
   ).isRequired,
-  renderEntry: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  renderEntry: PT.func.isRequired,
+  title: PT.string.isRequired,
 };

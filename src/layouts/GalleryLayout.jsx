@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React from 'react';
 
 import Thumbnail from 'components/Thumbnail';
@@ -20,7 +20,6 @@ export default function GalleryLayout({ thumbnails, title }) {
 }
 
 GalleryLayout.propTypes = {
-  thumbnails: PropTypes.arrayOf(customPropTypes.thumbnail.isRequired)
-    .isRequired,
-  title: PropTypes.string.isRequired,
+  thumbnails: PT.arrayOf(customPropTypes.thumbnail.isRequired).isRequired,
+  title: PT.string.isRequired,
 };

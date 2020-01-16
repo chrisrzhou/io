@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React from 'react';
 
 import Box from './Box';
@@ -12,5 +12,5 @@ export default function InfoText({ children, ...rest }) {
 }
 
 InfoText.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PT.node.isRequired,
 };

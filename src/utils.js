@@ -13,7 +13,7 @@ export function pluralize(word, count) {
 
 // parse an array of tags from an input string
 export function parseTags(inputString) {
-  const matches = inputString.match(/#\S+/g) || [];
+  const matches = inputString.match(/#\w+/g) || [];
   return matches.map(match => match.replace(/^#/, ''));
 }
 

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React, { useEffect, useState } from 'react';
 
 import Box from './Box';
@@ -23,6 +23,6 @@ export default function TypeText({ delay = 80, text, ...rest }) {
 }
 
 TypeText.propTypes = {
-  delay: PropTypes.number,
-  text: PropTypes.string.isRequired,
+  delay: PT.number,
+  text: PT.string.isRequired,
 };

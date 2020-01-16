@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React from 'react';
 
 import PageLayout from './PageLayout';
@@ -47,10 +47,10 @@ export default function BookLayout({ data, pageContext }) {
 }
 
 BookLayout.propTypes = {
-  data: PropTypes.shape({
-    mdx: PropTypes.object.isRequired,
+  data: PT.shape({
+    mdx: PT.object.isRequired,
   }).isRequired,
-  pageContext: PropTypes.object.isRequired,
+  pageContext: PT.object.isRequired,
 };
 
 export const pageQuery = graphql`

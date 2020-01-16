@@ -5,6 +5,7 @@ export const BOOKS = '/books';
 export const CTF = '/ctf';
 export const POSTS = '/posts';
 export const PROJECTS = '/projects';
+export const RESUME = '/about/resume';
 
 export const TAG_SEARCH_PARAM = 'tag';
 

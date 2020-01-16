@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React from 'react';
 
 import * as customPropTypes from 'customPropTypes';
@@ -65,6 +65,6 @@ export default function Thumbnail({ height = 300, thumbnail }) {
 }
 
 Thumbnail.propTypes = {
-  height: PropTypes.number,
+  height: PT.number,
   thumbnail: customPropTypes.thumbnail.isRequired,
 };

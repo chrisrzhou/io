@@ -3,17 +3,17 @@ title: picoCTF 2019
 tags: [picoCTF, "2019"]
 ---
 
-# Overview
+## Overview
 
 https://2019game.picoctf.com/problems solved in `bash` and `js`.
 
-# The Factory's Secret
+## The Factory's Secret
 
 #general #unsolved #1pt
 
 > There appear to be some mysterious glyphs hidden inside this abandoned factory... I wonder what would happen if you collected them all?
 
-# 2Warm
+## 2Warm
 
 #general #50pt #bases #bc
 
@@ -25,7 +25,7 @@ https://2019game.picoctf.com/problems solved in `bash` and `js`.
 echo "obase=2; ibase=10; 42" | bc
 ```
 
-# Glory of the Garden
+## Glory of the Garden
 
 #forensics #50pt #strings #grep
 
@@ -39,7 +39,7 @@ No information in the image. Check the string contents.
 strings garden.jpg | grep picoCTF{
 ```
 
-# Insp3ct0r
+## Insp3ct0r
 
 #web-exploits #50pt #curl #grep
 
@@ -56,7 +56,7 @@ curl https://2019shell1.picoctf.com/problem/61676/mycss.css | grep flag
 curl https://2019shell1.picoctf.com/problem/61676/myjs.js | grep flag
 ```
 
-# Lets Warm Up
+## Lets Warm Up
 
 #general #50pt #bases #ascii
 
@@ -70,7 +70,7 @@ Use `xxd` with `-r` to get the reverse of the hex representation
 echo "70" | xxd -r -p
 ```
 
-# The Numbers
+## The Numbers
 
 #cryptography #50pt #a1z26
 
@@ -94,7 +94,7 @@ function decodeA1Z26(ciphertext, alphabet = "abcdefghijklmnopqrstuvwxyz") {
 }
 ```
 
-# Warmed Up
+## Warmed Up
 
 #general #50pt #bases #bc
 
@@ -106,13 +106,13 @@ function decodeA1Z26(ciphertext, alphabet = "abcdefghijklmnopqrstuvwxyz") {
 echo "obase=10; ibase=16; 3D" | bc
 ```
 
-# handy-shellcode
+## handy-shellcode
 
 #binary-exploits #unsolved #50pt
 
 > This program executes any shellcode that you give it. Can you spawn a shell and use that to read the flag.txt? You can find the program in `/problems/handy-shellcode_4_037bd47611d842b565cfa1f378bfd8d9` on the shell server. Source.
 
-# practice-run-1
+## practice-run-1
 
 #binary-exploits #50pt
 
@@ -126,7 +126,7 @@ Simply download and execute with:
 ./run_this
 ```
 
-# unzip
+## unzip
 
 #forensics #50pt #unzip
 
@@ -139,7 +139,7 @@ unzip flag.zip
 # open image file
 ```
 
-# vault-door-training
+## vault-door-training
 
 #reverse-engineering #50pt
 
@@ -149,7 +149,7 @@ unzip flag.zip
 
 Read the source code to obtain the password.
 
-# 13
+## 13
 
 #cryptography #100pt #rot13
 
@@ -179,7 +179,7 @@ function decodeCaesar(
 }
 ```
 
-# Bases
+## Bases
 
 #general #100pt #base64
 
@@ -193,7 +193,7 @@ Looks like a base64-encoded string. Decode it with:
 echo "bDNhcm5fdGgzX3IwcDM1" | base64 -D
 ```
 
-# Easy1
+## Easy1
 
 #cryptography #vigenere-cipher
 
@@ -234,7 +234,7 @@ Y | Y Z A B C D E F G H I J K L M N O P Q R S T U V W X
 Z | Z A B C D E F G H I J K L M N O P Q R S T U V W X Y
 ```
 
-# First Grep
+## First Grep
 
 #general #100pt #grep
 
@@ -246,13 +246,13 @@ Z | Z A B C D E F G H I J K L M N O P Q R S T U V W X Y
 grep picoCTF{ file
 ```
 
-# Overflow 0
+## Overflow 0
 
 #binary-exploits #unsolved #100pt
 
 > This should be easy. Overflow the correct buffer in this program and get a flag. Its also found in `/problems/overflow-0_4_e130f4df1710865981d50f778a8059f7` on the shell server. Source.
 
-# Resources
+## Resources
 
 #general #100pt #grep
 
@@ -264,7 +264,7 @@ grep picoCTF{ file
 curl https://picoctf.com/resources | grep picoCTF{
 ```
 
-# caesar
+## caesar
 
 #cryptography #100pt #caesar-cipher #brute-force
 
@@ -283,7 +283,7 @@ function decrypt(ciphertext) {
 }
 ```
 
-# dont-use-client-side
+## dont-use-client-side
 
 #web-exploits #100pt #curl
 
@@ -297,7 +297,7 @@ Study the javascript code and repiece/reorder the flag.
 curl https://2019shell1.picoctf.com/problem/12280/
 ```
 
-# logon
+## logon
 
 #web-exploits #100pt #postman
 
@@ -313,7 +313,7 @@ curl https://2019shell1.picoctf.com/problem/12280/
 - Navigate to the `GET /flag` endpoint and receive a clue that we logged in but cannot view the flag.
 - With the earlier knowledge about the server-set default cookie value for `admin`, change this in the request headers and resend the `GET /flag` request.
 
-# strings it
+## strings it
 
 #general #100pt #strings #grep
 
@@ -325,7 +325,7 @@ curl https://2019shell1.picoctf.com/problem/12280/
 strings strings | grep picoCTF{
 ```
 
-# vault-door-1
+## vault-door-1
 
 #reverse-engineering #100pt
 
@@ -335,7 +335,7 @@ strings strings | grep picoCTF{
 
 Read and reverse-engineer the code.
 
-# what's a net cat?
+## what's a net cat?
 
 #general-skills #100pt #nc
 
@@ -347,7 +347,7 @@ Read and reverse-engineer the code.
 nc 2019shell1.picoctf.com 4158
 ```
 
-# where are the robots
+## where are the robots
 
 #web-exploits #100pt #robots #curl #grep
 
@@ -364,7 +364,7 @@ curl https://2019shell1.picoctf.com/problem/4159/a44f7.html
 curl https://2019shell1.picoctf.com/problem/4159/a44f7.html | grep picoCTF{
 ```
 
-# So Meta
+## So Meta
 
 #forensics #150pt #strings #grep
 
@@ -378,7 +378,7 @@ Image provides no visual clues, check the file content with `strings` and `grep`
 strings pico_img.png | grep picoCTF{
 ```
 
-# What Lies Within
+## What Lies Within
 
 #forensics #unsolved #150pt
 
@@ -390,7 +390,7 @@ strings pico_img.png | grep picoCTF{
 
 ```
 
-# extensions
+## extensions
 
 #forensics #150pt #file
 
@@ -403,7 +403,7 @@ file flag.txt
 mv flag.txt flag.png  # open image file for flag
 ```
 
-# shark on wire 1
+## shark on wire 1
 
 #forensics #unsolved #forensics #150pt
 
@@ -415,7 +415,7 @@ mv flag.txt flag.png  # open image file for flag
 
 ```
 
-# Based
+## Based
 
 #general #200pt #ascii
 
@@ -434,7 +434,7 @@ function getAsciiString(input, base) {
 }
 ```
 
-# Client-side-again
+## Client-side-again
 
 > Can you break into this super secure portal? https://2019shell1.picoctf.com/problem/47277/ (link) or http://2019shell1.picoctf.com:47277
 >
@@ -503,7 +503,7 @@ function verify() {
 }
 ```
 
-# First Grep: Part II
+## First Grep: Part II
 
 #general #200pt #grep
 
@@ -515,7 +515,7 @@ function verify() {
 grep -r picoCTF{ .
 ```
 
-# Flags
+## Flags
 
 #cryptography #200pt
 
@@ -525,7 +525,7 @@ grep -r picoCTF{ .
 
 The image looks like a character mapping of visual flags to text characters. One such mapping exists: https://www.dcode.fr/maritime-signals-code.
 
-# Mr-Worldwide
+## Mr-Worldwide
 
 #cryptography #200pt
 
@@ -535,7 +535,7 @@ The image looks like a character mapping of visual flags to text characters. One
 
 The clue is in the name of the problem (i.e. `worldwide`). Take the first letters of cities (`KODIAK`) and first letters of regions `ALASKA`).
 
-# Open-to-admins
+## Open-to-admins
 
 #web-exploits #200pt #postman
 
@@ -549,7 +549,7 @@ The clue is in the name of the problem (i.e. `worldwide`). Take the first letter
 - Set `admin=True;time=1400` from the problem description.
 - `GET /flag` now gives the flag.
 
-# Tapping
+## Tapping
 
 #cryptography #200pt #morsecode
 
@@ -611,7 +611,7 @@ function decodeMorseCode(ciphertext) {
 }
 ```
 
-# la cifra de
+## la cifra de
 
 #cryptography #200pt #vigenere-cipher
 
@@ -623,7 +623,7 @@ Connect with `nc` and see that we have to decode `hgqqpohzCZK{m311a50_0x_a1rn3x3
 
 The ciphertext seems to preserve the character size of each word, suggesting a Vigenere cipher. Use an online tool https://www.guballa.de/vigenere-solver as suggested by the hint to crack this and capture the flag.
 
-# picobrowser
+## picobrowser
 
 #web-exploits #200pt #postman
 
@@ -638,7 +638,7 @@ The ciphertext seems to preserve the character size of each word, suggesting a V
 - Study the request headers and notice that `User-Agent` should be changed from `PostmanRuntime/7.20.1` to `picobrowser`.
 - Resend the `GET /flag` request.
 
-# plumbing
+## plumbing
 
 #general #200pt #nc #grep
 
@@ -652,7 +652,7 @@ As suggested, we should probably pipe this through `grep`
 nc 2019shell1.picoctf.com 63345 | grep picoCTF{
 ```
 
-# rsa-pop-quiz
+## rsa-pop-quiz
 
 #cryptography #unsolved #200pt
 
@@ -700,7 +700,7 @@ def c(m, e, n):
 - Problem 8:
   - Unsolved
 
-# vault-door-3
+## vault-door-3
 
 #reverse-engineering #unsolved #200pt
 
@@ -708,7 +708,7 @@ def c(m, e, n):
 >
 > ``
 
-# whats-the-difference
+## whats-the-difference
 
 #general #200pt #cmp #awk #tr #ascii
 
@@ -723,7 +723,7 @@ cmp kitters.jpg cattos.jpg -l
 cmp kitters.jpg cattos.jpg -l | awk '{print $3}' | tr '\n' ' '
 ```
 
-# where-is-the-file
+## where-is-the-file
 
 #general #200pt
 
@@ -731,7 +731,7 @@ cmp kitters.jpg cattos.jpg -l | awk '{print $3}' | tr '\n' ' '
 >
 > ``
 
-# WhitePages
+## WhitePages
 
 #forensics #250pt #xxd #awk #sed #ascii
 
@@ -764,7 +764,7 @@ getAsciiString(delimitate(bstring1), 2); // gibberish
 getAsciiString(delimitate(bstring2), 2); // the flag shows up!
 ```
 
-# c0rrupt
+## c0rrupt
 
 #forensics #unsolved #250pt
 
@@ -772,7 +772,7 @@ getAsciiString(delimitate(bstring2), 2); // the flag shows up!
 >
 > ``
 
-# like1000
+## like1000
 
 #forensics #250pt #tar
 
@@ -802,7 +802,7 @@ def run():
 run()
 ```
 
-# m00nwalk
+## m00nwalk
 
 #forensics #unsolved #250pt
 
@@ -818,7 +818,7 @@ We are interested in the data of the file. Use `xxd` and seek to `45` to obtain 
 xxd -s 45 message.wav > data
 ```
 
-# Irish-Name-Repo 1
+## Irish-Name-Repo 1
 
 #web-exploits #300pt #sql-injection
 
@@ -831,7 +831,7 @@ The website does not provide anything useful aside from a hint in the `/support`
 - `'--`: Nothing happens, which means the filter conditions are applied before the injection.
 - `'OR 1=1--`: We successfully logged in :)
 
-# waves over lambda
+## waves over lambda
 
 #cryptography #300pt #frequency-analysis #grep #sed
 
@@ -880,7 +880,7 @@ CONGRATS HERE IS YOUR FLAG - FREQUENCY_IS_C_OVER_LAMBDA_MUPGPENNOD
 BETWEEN US THERE WAS, AS I HAVE ALREADY SAID SOMEWHERE, THE BOND OF THE SEA. BESIDES HOLDING OUR HEARTS TOGETHER THROUGH LONG PERIODS OF SEPARATION, IT HAD THE EFFECT OF MAKING US TOLERANT OF EACH OTHER'S YARNSAND EVEN CONVICTIONS. THE LAWYERTHE BEST OF OLD FELLOWSHAD, BECAUSE OF HIS MANY YEARS AND MANY VIRTUES, THE ONLY CUSHION ON DECK, AND WAS LYING ON THE ONLY RUG. THE ACCOUNTANT HAD BROUGHT OUT ALREADY A BOX OF DOMINOES, AND WAS TOYING ARCHITECTURALLY WITH THE BONES. MARLOW SAT CROSS-LEGGED RIGHT AFT, LEANING AGAINST THE MIZZEN-MAST. HE HAD SUNKEN CHEEKS, A YELLOW COMPLEXION, A STRAIGHT BACK, AN ASCETIC ASPECT, AND, WITH HIS ARMS DROPPED, THE PALMS OF HANDS OUTWARDS, RESEMBLED AN IDOL. THE DIRECTOR, SATISFIED THE ANCHOR HAD GOOD HOLD, MADE HIS WAY AFT AND SAT DOWN AMONGST US. WE EXCHANGED A FEW WORDS LAZILY. AFTERWARDS THERE WAS SILENCE ON BOARD THE YACHT. FOR SOME REASON OR OTHER WE DID NOT BEGIN THAT GAME OF DOMINOES. WE FELT MEDITATIVE, AND FIT FOR NOTHING BUT PLACID STARING. THE DAY WAS ENDING IN A SERENITY OF STILL AND EXQUISITE BRILLIANCE. THE WATER SHONE PACIFICALLY; THE SKY, WITHOUT A SPECK, WAS A BENIGN IMMENSITY OF UNSTAINED LIGHT; THE VERY MIST ON THE ESSEX MARSH WAS LIKE A GAUZY AND RADIANT FABRIC, HUNG FROM THE WOODED RISES INLAND, AND DRAPING THE LOW SHORES IN DIAPHANOUS FOLDS. ONLY THE GLOOM TO THE WEST, BROODING OVER THE UPPER REACHES, BECAME MORE SOMBRE EVERY MINUTE, AS IF ANGERED BY THE APPROACH OF THE SUN.
 ```
 
-# Irish-Name-Repo 2
+## Irish-Name-Repo 2
 
 #web-exploits #350pt #curl #sql-injection
 
@@ -899,7 +899,7 @@ curl https://2019shell1.picoctf.com/problem/7411/login.php -d "username='admin--
 curl https://2019shell1.picoctf.com/problem/7411/login.php -d "username=admin'--&debug=1"
 ```
 
-# Empire1 #400pt
+## Empire1 #400pt
 
 #web-exploits #400pt #unsolved
 
@@ -907,7 +907,7 @@ curl https://2019shell1.picoctf.com/problem/7411/login.php -d "username=admin'--
 >
 > ``
 
-# Irish-Name-Repo 3
+## Irish-Name-Repo 3
 
 #web-exploits #400pt #unsolved
 
@@ -915,7 +915,7 @@ curl https://2019shell1.picoctf.com/problem/7411/login.php -d "username=admin'--
 >
 > ``
 
-# JaWT Scratchpad
+## JaWT Scratchpad
 
 #web-exploits #400pt #unsolved
 
@@ -923,7 +923,7 @@ curl https://2019shell1.picoctf.com/problem/7411/login.php -d "username=admin'--
 >
 > ``
 
-# Java Script Kiddie
+## Java Script Kiddie
 
 #web-exploits #400pt #unsolved
 
@@ -931,7 +931,7 @@ curl https://2019shell1.picoctf.com/problem/7411/login.php -d "username=admin'--
 >
 > ``
 
-# cereal hacker 1
+## cereal hacker 1
 
 #web-exploits #400pt #unsolved
 
@@ -939,7 +939,7 @@ curl https://2019shell1.picoctf.com/problem/7411/login.php -d "username=admin'--
 >
 > ``
 
-# Ghost_Diary
+## Ghost_Diary
 
 #binary-exploits #500pt #unsolved
 

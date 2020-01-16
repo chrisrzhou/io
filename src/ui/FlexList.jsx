@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React from 'react';
 
 import Flex from './Flex';
@@ -30,8 +30,8 @@ export default function FlexList({
 }
 
 FlexList.propTypes = {
-  children: PropTypes.node.isRequired,
-  css: PropTypes.string,
-  flexDirection: PropTypes.string,
-  spacing: PropTypes.number,
+  children: PT.node.isRequired,
+  css: PT.string,
+  flexDirection: PT.string,
+  spacing: PT.number,
 };

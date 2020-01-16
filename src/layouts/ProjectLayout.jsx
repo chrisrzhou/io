@@ -1,6 +1,6 @@
 import { format } from 'd3';
 import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React from 'react';
 
 import PageLayout from './PageLayout';
@@ -59,10 +59,10 @@ export default function ProjectLayout({ data, pageContext }) {
 }
 
 ProjectLayout.propTypes = {
-  data: PropTypes.shape({
-    githubData: PropTypes.object.isRequired,
+  data: PT.shape({
+    githubData: PT.object.isRequired,
   }).isRequired,
-  pageContext: PropTypes.object.isRequired,
+  pageContext: PT.object.isRequired,
 };
 
 export const pageQuery = graphql`

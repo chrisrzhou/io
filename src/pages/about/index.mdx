@@ -1,0 +1,50 @@
+import { Link } from "gatsby";
+import PageLayout from "layouts/PageLayout";
+
+import * as routes from "routes";
+import { CodeTokenList, FlexList, Icon, MentionList } from "ui";
+
+import resume from "../../../data/resume.json";
+
+export default function AboutPage({ children }) {
+  const description = (
+    <FlexList>
+      <div>What data I cannot render, I do not understand.</div>
+      <Icon as="a" href={resume.github} icon="github" size="s">
+        Github
+      </Icon>
+      <Link to={routes.RESUME}>Resume</Link>
+    </FlexList>
+  );
+  return (
+    <PageLayout description={description} title="About">
+      {children}
+    </PageLayout>
+  );
+}
+
+## Manifesto
+
+Information/data is all around us. I enjoy transforming data into simple delightful interfaces, empowering human workflows and experiences in an increasingly dehumanized (machinized) world.
+
+I wish to contribute towards an open and cheap future, where everyone can solve higher-order challenges without struggling with lower-order problems. I see the beauty in code as a way to engineer solutions and build an evolving platform for collaboration.
+
+I believe that the choices we make matter more than the goals we seek. They reflect our principles, beliefs and values on how we conduct ourselves and the work we create.
+
+## Interests
+
+Most of my projects touch on the following interest areas:
+
+<CodeTokenList values={resume.interests} />
+
+## Tools
+
+As a hack-of-all-trades, I am unopinionated about tools and utilize what is best for the task. I have used the following tools effectively in past projects:
+
+<CodeTokenList values={resume.skills} />
+
+## Influences
+
+My approach of building simple, cheap and quality interfaces are largely inspired by the following people:
+
+<MentionList mentions={resume.influences} />

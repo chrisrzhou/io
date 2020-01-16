@@ -1,0 +1,119 @@
+{
+  "name": "Chris Zhou",
+  "email": "chrisrzhou@pm.me",
+  "github": "https://www.github.com/chrisrzhou",
+  "homepage": "https://chrisrzhou.io",
+  "description": "I enjoy transforming data into simple delightful interfaces, empowering human workflows and experiences in an increasingly dehumanized (machinized) world. I see the beauty in code as a way to engineer solutions and build an evolving platform for people to collaborate.  Let's build that together!",
+  "projectsUrl": "http://chrisrzhou.io/projects",
+  "experience": [
+    {
+      "title": "Senior Frontend Engineer",
+      "company": "Roam Analytics",
+      "companyUrl": "https://www.linkedin.com/company/roam-analytics/",
+      "start": "2019-06-01",
+      "end": null,
+      "description": [
+        "Agile, flexible and adaptive engineer building multiple polished tools for the Roam platform. These tools empower human workflows with healthcare language data by integrating naturally with the underlying NLP/ML technologies in the platform. Key workflows include annotations, rich document search (on annotations, synonyms).",
+        "Scaled frontend infra by building various shared solutions (design system, UI component library, lint rules, progressive documentation), allowing the engineering org to build projects with consistency and confidence."
+      ]
+    },
+    {
+      "title": "Senior Data UI Engineer",
+      "company": "Facebook",
+      "companyUrl": "https://www.linkedin.com/company/facebook/",
+      "start": "2018-07-01",
+      "end": "2019-06-11",
+      "description": [
+        "Full stack engineer leading and building multiple data products (pipelines, APIs, UIs) with an emphasis on design, workflows and UIUX.",
+        "'Rabbit': Tableau-like data exploration, visualization and dashboarding tool built in React/Redux.",
+        "'Survey Insights': Internal tool built to automate survey results and visualizations when a survey is uploaded from a third-party survey source e.g. Qualtrics.",
+        "'Pulse Insights': Built a scalable solution to analyze company Pulse survey results in an internal tool written in React/Redux/GraphQL.",
+        "'FBFiddle': Facebook JS Fiddle supporting internal JS modules.",
+        "Shipped multiple data UIs and visualization components in React."
+      ]
+    },
+    {
+      "title": "Data Engineer",
+      "company": "Facebook",
+      "companyUrl": "https://www.linkedin.com/company/facebook/",
+      "start": "2015-05-04",
+      "end": "2018-06-30",
+      "description": []
+    },
+    {
+      "title": "Business Intelligence Analyst",
+      "company": "NRG Energy",
+      "companyUrl": "https://www.linkedin.com/company/nrgenergy/",
+      "start": "2011-01",
+      "end": "2015-04-04",
+      "description": [
+        "Jack-of-all-data-trades employing relevant tools and technologies (R, Python, VBA, Oracle) to engineer creative solutions.",
+        "Drove high impact organization projects aimed to recover over $3M annually through process improvements and building better IT processes and tools.",
+        "Core evangelist on modernizing business reporting (shift from Excel to open-source solutions e.g. interactive R-shiny web applications).",
+        "Created the calculation foundations for business pricing and supply costs, fulfilling pricing for over 1M residential customers every year."
+      ]
+    }
+  ],
+  "education": {
+    "school": "Rice University",
+    "degree": "Bachelor of Science",
+    "fields": ["Physics", "Mathematics"],
+    "gpaScore": 3.59,
+    "gpaMaxScore": 4,
+    "start": "2006-07-01",
+    "end": "2009-12-01"
+  },
+  "skills": [
+    "react",
+    "redux",
+    "graphql",
+    "d3",
+    "threejs",
+    "webgl",
+    "typescript",
+    "flow",
+    "jest",
+    "cypress",
+    "gatsby",
+    "mdx",
+    "python",
+    "sql"
+  ],
+  "interests": [
+    "frontend",
+    "data visualization",
+    "design system",
+    "component library",
+    "progressive documentation",
+    "uiux",
+    "dx",
+    "open source",
+    "privacy",
+    "cheap ui",
+    "jamstack",
+    "automation",
+    "genetic algorithms"
+  ],
+  "influences": [
+    {
+      "name": "jxnblk",
+      "url": "https://jxnblk.com"
+    },
+    {
+      "name": "ramaworks",
+      "url": "https://rama.works"
+    },
+    {
+      "name": "mbostock",
+      "url": "https://github.com/mbostock"
+    },
+    {
+      "name": "gaearon",
+      "url": "https://github.com/gaearon"
+    },
+    {
+      "name": "mrdoob",
+      "url": "https://github.com/mrdoob"
+    }
+  ]
+}

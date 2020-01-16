@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'emotion-theming';
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React, { useEffect } from 'react';
 import Helmet from 'react-helmet';
 
@@ -42,7 +42,9 @@ export default function PageLayout({
             <Actions actions={actions} source={source} />
             <Box flexShrink={0}>
               <h1>{title}</h1>
-              <InfoText pb={4}>{description}</InfoText>
+              <InfoText pb={4} pt={1}>
+                {description}
+              </InfoText>
             </Box>
             {children}
           </Flex>
@@ -53,9 +55,9 @@ export default function PageLayout({
 }
 
 PageLayout.propTypes = {
-  actions: PropTypes.arrayOf(customPropTypes.action.isRequired),
-  children: PropTypes.node.isRequired,
-  description: PropTypes.node,
-  source: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  actions: PT.arrayOf(customPropTypes.action.isRequired),
+  children: PT.node.isRequired,
+  description: PT.node,
+  source: PT.string,
+  title: PT.string.isRequired,
 };

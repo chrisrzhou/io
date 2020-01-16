@@ -1,7 +1,7 @@
 import { globalHistory, navigate } from '@reach/router';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 
 import PageLayout from './PageLayout';
@@ -138,10 +138,10 @@ export default function CtfLayout({ data, pageContext }) {
 }
 
 CtfLayout.propTypes = {
-  data: PropTypes.shape({
-    mdx: PropTypes.object.isRequired,
+  data: PT.shape({
+    mdx: PT.object.isRequired,
   }).isRequired,
-  pageContext: PropTypes.object.isRequired,
+  pageContext: PT.object.isRequired,
 };
 
 export const pageQuery = graphql`

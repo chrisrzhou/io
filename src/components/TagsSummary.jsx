@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React from 'react';
 
 import { FlexList, InfoText, Tag } from 'ui';
@@ -31,13 +31,13 @@ export default function TagsSummary({
 }
 
 TagsSummary.propTypes = {
-  direction: PropTypes.oneOf(['column', 'row']),
-  onSelectTag: PropTypes.func,
-  pathname: PropTypes.string.isRequired,
-  tags: PropTypes.arrayOf(
-    PropTypes.shape({
-      count: PropTypes.number.isRequired,
-      value: PropTypes.string.isRequired,
+  direction: PT.oneOf(['column', 'row']),
+  onSelectTag: PT.func,
+  pathname: PT.string.isRequired,
+  tags: PT.arrayOf(
+    PT.shape({
+      count: PT.number.isRequired,
+      value: PT.string.isRequired,
     }).isRequired,
   ).isRequired,
 };

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React from 'react';
 
 import * as customPropTypes from 'customPropTypes';
@@ -45,6 +45,6 @@ export default function Actions({ actions = [], source }) {
 }
 
 Actions.propTypes = {
-  actions: PropTypes.arrayOf(customPropTypes.action.isRequired),
-  source: PropTypes.string,
+  actions: PT.arrayOf(customPropTypes.action.isRequired),
+  source: PT.string,
 };

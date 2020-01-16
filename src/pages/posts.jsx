@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React from 'react';
 
 import EntriesLayout from 'layouts/EntriesLayout';
@@ -9,7 +9,7 @@ export default function PostsPage({ data }) {
 }
 
 PostsPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PT.object.isRequired,
 };
 
 export const pageQuery = graphql`

@@ -1,6 +1,6 @@
 import { globalHistory } from '@reach/router';
 import React from 'react';
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import { Link } from 'gatsby';
 
 import WithTagsLayout from './WithTagsLayout';
@@ -50,8 +50,8 @@ export default function EntriesLayout({ data, title }) {
 }
 
 EntriesLayout.propTypes = {
-  data: PropTypes.shape({
-    allMdx: PropTypes.object.isRequired,
+  data: PT.shape({
+    allMdx: PT.object.isRequired,
   }).isRequired,
-  title: PropTypes.string.isRequired,
+  title: PT.string.isRequired,
 };

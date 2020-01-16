@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 import React from 'react';
 
 import { FlexList, InfoText } from 'ui';
@@ -22,14 +22,14 @@ export default function TableOfContents({ contents, onSelectContent }) {
 }
 
 const nodeShape = {
-  items: PropTypes.arrayOf(PropTypes.shape(this).isRequired),
-  title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  items: PT.arrayOf(PT.shape(this).isRequired),
+  title: PT.string.isRequired,
+  url: PT.string.isRequired,
 };
 
 TableOfContents.propTypes = {
-  contents: PropTypes.shape({
-    items: PropTypes.arrayOf(PropTypes.shape(nodeShape).isRequired),
+  contents: PT.shape({
+    items: PT.arrayOf(PT.shape(nodeShape).isRequired),
   }),
-  onSelectContent: PropTypes.func.isRequired,
+  onSelectContent: PT.func.isRequired,
 };

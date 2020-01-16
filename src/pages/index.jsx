@@ -13,6 +13,7 @@ const links = [
   { label: 'Books', to: routes.BOOKS },
   { label: 'Art', to: routes.ART },
   { label: 'CTF', to: routes.CTF },
+  { label: 'Resume', to: routes.RESUME },
 ];
 
 export default function IndexPage() {
