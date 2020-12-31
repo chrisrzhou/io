@@ -4,8 +4,6 @@ date: 2020-12-31
 tags: [consciousness, philosophy, story]
 ---
 
-# I
-
 This microstory presents a thought experiment when traveling and seeing oneself at the other end of the [wormhole](https://en.wikipedia.org/wiki/Wormhole).
 
 Who am I? Who is the real me? Are we both 'me'? Is the question valid in the first place? If you have solidifed a viewpoint, feel free to read the [palindromic](https://en.wikipedia.org/wiki/Palindrome) story backwards or invert the perspective of the subject falling/emerging through the wormhole.
