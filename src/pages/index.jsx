@@ -20,7 +20,7 @@ export default function IndexPage() {
   const description = (
     <>
       Imprinting <a href={getGithubSourceLink()}>myself</a> digitally on the
-      web, one <a href={getGithubLink('io/commits/master')}>commit</a> at a
+      web, one <a href={getGithubLink('io/commits')}>commit</a> at a
       time.
     </>
   );
